@@ -4,7 +4,7 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="com.grandcircus.spring.models.BeerEntity" table="beer" schema="beer">
+     <class name="com.grandcircus.spring.models.BeerEntity" table="beer" schema="beer">
         <id name="beerId">
             <column name="beerID" sql-type="int(11)"/>
         </id>
