@@ -11,6 +11,7 @@
     <title>Login</title>
 </head>
 <body>
+Please log in!
 <%-- This will contain our Facebook login API --%>
 </body>
 </html>

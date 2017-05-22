@@ -12,9 +12,39 @@ import org.springframework.web.servlet.ModelAndView;
 public class HomeController {
 
     @RequestMapping("/")
-    public ModelAndView helloWorld()
+    public ModelAndView login()
     {
         return new
                 ModelAndView("login","hello","Hello Team!");
+    }
+    @RequestMapping("/addABeer")
+    public ModelAndView addABeer()
+    {
+        return new
+                ModelAndView("addabeer","hello","Hello Team!");
+    }
+    @RequestMapping("/addABeerSuccess")
+    public ModelAndView addABeerSuccess()
+    {
+        return new
+                ModelAndView("addabeersuccess","hello","Hello Team!");
+    }
+    @RequestMapping("/findABeer")
+    public ModelAndView findABeer()
+    {
+        return new
+                ModelAndView("findabeer","hello","Hello Team!");
+    }
+    @RequestMapping("/findABeerResult")
+    public ModelAndView findABeerResult()
+    {
+        return new
+                ModelAndView("findabeerresult","hello","Hello Team!");
+    }
+    @RequestMapping("/userOptions")
+    public ModelAndView userOptions()
+    {
+        return new
+                ModelAndView("useroptions","hello","Hello Team!");
     }
 }
