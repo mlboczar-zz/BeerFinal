@@ -11,6 +11,10 @@
     <title>Find A Beer Result</title>
 </head>
 <body>
+Thanks! This beer has been you tasted. <br>
+
+<a href="/">Back to List</a>
+
 
 </body>
 </html>
