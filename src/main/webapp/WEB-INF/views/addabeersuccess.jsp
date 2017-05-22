@@ -6,11 +6,14 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Add A Beer Success</title>
 </head>
 <body>
-<%-- This will display a success message and an option to add another beer or go back to the main menu--%>
+Thanks! This beer has been added to your database. <br>
+
+<a href="/">Back to List</a>
 </body>
 </html>
