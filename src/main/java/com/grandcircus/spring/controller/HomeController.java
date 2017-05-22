@@ -15,6 +15,6 @@ public class HomeController {
     public ModelAndView helloWorld()
     {
         return new
-                ModelAndView("/WEB-INF/views/login.jsp","hello","Hello Team!");
+                ModelAndView("login","hello","Hello Team!");
     }
 }
