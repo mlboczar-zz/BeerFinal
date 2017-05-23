@@ -1,7 +1,6 @@
 package com.grandcircus.spring.controller;
 
 import com.grandcircus.spring.models.BeerEntity;
-import com.grandcircus.spring.models.BeerreviewEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -18,6 +17,14 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class HomeController {
 
+    @RequestMapping("/")
+    public ModelAndView login()
+    {
+
+        return new
+                ModelAndView("login","hello","Hello Team!");
+    }
+
 
     @RequestMapping("/fb")
     public ModelAndView FBUserTest()
@@ -25,13 +32,6 @@ public class HomeController {
         return new
                 ModelAndView("fbUserTest","hello","Hello Team!");
     }
-    @RequestMapping("/")
-    public ModelAndView login()
-    {
-        return new
-                ModelAndView("login","hello","Hello Team!");
-    }
-
 
     @RequestMapping("/addabeer")
     public String addABeer()
@@ -47,19 +47,25 @@ public class HomeController {
 //    }
 
     @RequestMapping("addabeersuccess")
-    public ModelAndView addABeer(@RequestParam("beerID") int beerID,
-                                @RequestParam("beerDescription") String description,
+    public ModelAndView addABeer(@RequestParam("beerName") String beerName,
+                                @RequestParam("location") String location,
+                                @RequestParam("beerType") String beerType,
+                                @RequestParam("beerFlavors") String beerFlavors,
+                                @RequestParam("beerDescription") String beerDescription,
                                 @RequestParam("beerRating") String beerRating) {
 
         Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
         SessionFactory sessionFact = cfg.buildSessionFactory();
         Session session = sessionFact.openSession();
         Transaction tx = session.beginTransaction();
-        BeerreviewEntity newBeer = new BeerreviewEntity();
-        newBeer.setBeerId(beerID);
-        newBeer.setBeerDescription(description);
-        newBeer.setBeerRating(beerRating);
-
+        BeerEntity newBeer = new BeerEntity();
+        newBeer.setBeerName(beerName);
+        newBeer.setLocation(location);
+        newBeer.setBeerType(beerType);
+        newBeer.setBeerFlavors(beerFlavors);
+//        newBeer.setDescription(beerDescription);
+//        newBeer.setBeerRating(beerRating);
+//
         session.save(newBeer);
         tx.commit();
         session.close();
@@ -82,13 +88,14 @@ public class HomeController {
     }
 
     @RequestMapping("/useroptions")
-    public ModelAndView userOptions(@RequestParam("status") String id)
+    public ModelAndView userOptions(@RequestParam("status") String id ,  @RequestParam("userName") String name)
     {
         System.out.println("It was " + id);
 
         //set the FB_LOGIN_ID to the current user, using id passed from login.jsp
         FBLogin.FB_LOGIN_ID = id;
+        FBLogin.FB_LOGIN_NAME = name;
         return new
-                ModelAndView("useroptions","loginID",FBLogin.FB_LOGIN_ID);
+                ModelAndView("useroptions","loginName",FBLogin.FB_LOGIN_NAME);
     }
 }
