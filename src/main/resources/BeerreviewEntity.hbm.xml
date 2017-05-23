@@ -5,8 +5,8 @@
 <hibernate-mapping>
 
     <class name="com.grandcircus.spring.models.BeerreviewEntity" table="beerreview" schema="beer">
-        <id name="beerId" type="int" column="beerID">
-            <generator class="native"/>
+        <id name="beerId">
+            <column name="beerID" sql-type="int(11)"/>
         </id>
         <property name="beerDescription">
             <column name="beerDescription" sql-type="varchar(45)" length="45" not-null="true"/>
