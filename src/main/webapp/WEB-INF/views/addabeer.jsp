@@ -53,8 +53,8 @@
     <input type="radio" name="beerRating" value="2"> 2<br>
     <input type="radio" name="beerRating" value="1"> 1<br>
 
-    BeerID
-    <input type="text" name="beerID"><br>
+    <%--BeerID--%>
+    <%--<input type="text" name="beerID"><br>--%>
 
     <input type="submit" name="Add Beer"><br>
 

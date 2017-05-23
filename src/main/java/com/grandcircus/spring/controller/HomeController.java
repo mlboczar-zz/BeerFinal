@@ -43,8 +43,7 @@ public class HomeController {
                                 @RequestParam("beerType") String beerType,
                                 @RequestParam("beerFlavors") String beerFlavors,
                                 @RequestParam("beerDescription") String beerDescription,
-                                @RequestParam("beerRating") String beerRating,
-                                 @RequestParam("beerID") int beerID) {
+                                @RequestParam("beerRating") String beerRating) {
 
         Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
         SessionFactory sessionFact = cfg.buildSessionFactory();
@@ -57,7 +56,6 @@ public class HomeController {
         newBeer.setBeerFlavors(beerFlavors);
         newBeer.setDescription(beerDescription);
         newBeer.setBeerRating(beerRating);
-        newBeer.setBeerId(beerID);
 
         session.save(newBeer);
         tx.commit();
