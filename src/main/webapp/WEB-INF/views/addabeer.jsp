@@ -15,16 +15,14 @@
 <body>
 
 <form action="/addabeersuccess" method="post">
-    <h2>Choose a beer to rate</h2>
+    <h4>Choose a beer to rate</h4>
 
-    <div class="dropdown">
-        <button onclick="toggleDropdownContent()" class="dropbtn">Beers</button>
-        <div id="myDropdown" class="dropdown-content">
-            <a>Oberon</a>
-            <a>Fat Tire</a>
-            <a>All Day IPA</a>
-        </div>
-    </div>
+    <select name="beerID">
+        <option value="4">Oberon</option>
+        <option value="5">Fat Tire</option>
+        <option value="6">All Day IPA</option>
+    </select>
+    <br><br>
 
     Beer Description<br>
     <input type="checkbox" name="beerDescription" value="bitter">Bitter<br>

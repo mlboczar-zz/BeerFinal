@@ -20,10 +20,10 @@ public class HomeController {
 
 
     @RequestMapping("/fb")
-    public ModelAndView FBUserTest()
-    {
-        return new
-                ModelAndView("fbUserTest","hello","Hello Team!");
+        public ModelAndView FBUserTest()
+        {
+            return new
+                    ModelAndView("fbUserTest","hello","Hello Team!");
     }
     @RequestMapping("/")
     public ModelAndView login()
@@ -55,16 +55,16 @@ public class HomeController {
         SessionFactory sessionFact = cfg.buildSessionFactory();
         Session session = sessionFact.openSession();
         Transaction tx = session.beginTransaction();
-        BeerreviewEntity newBeer = new BeerreviewEntity();
-        newBeer.setBeerId(beerID);
-        newBeer.setBeerDescription(description);
-        newBeer.setBeerRating(beerRating);
+        BeerreviewEntity newBeerReview = new BeerreviewEntity();
+        newBeerReview.setBeerId(beerID);
+        newBeerReview.setBeerDescription(description);
+        newBeerReview.setBeerRating(beerRating);
 
-        session.save(newBeer);
+        session.save(newBeerReview);
         tx.commit();
         session.close();
 
-        return new ModelAndView("addabeersuccess", "addingbeer", newBeer);
+        return new ModelAndView("addabeersuccess", "addingbeer", newBeerReview);
     }
 
     @RequestMapping("/findabeer")
@@ -82,13 +82,14 @@ public class HomeController {
     }
 
     @RequestMapping("/useroptions")
-    public ModelAndView userOptions(@RequestParam("status") String id)
+    public ModelAndView userOptions(@RequestParam("status") String id ,  @RequestParam("userName") String name)
     {
         System.out.println("It was " + id);
 
         //set the FB_LOGIN_ID to the current user, using id passed from login.jsp
         FBLogin.FB_LOGIN_ID = id;
+        FBLogin.FB_LOGIN_NAME = name;
         return new
-                ModelAndView("useroptions","loginID",FBLogin.FB_LOGIN_ID);
+                ModelAndView("useroptions","loginName",FBLogin.FB_LOGIN_NAME);
     }
 }

@@ -16,6 +16,7 @@
 <body>
 <form action = "/useroptions" >
     <input type="hidden" name = "status" id="status" value='${status}'/>
+    <input type="hidden" name = "userName" id="userName" value='${userName}'/>
     <input type="submit" value ="Go to User Options" name = "Submit" />
 </form>
 
@@ -98,6 +99,8 @@
                 response.id;
 
             document.getElementById('status').value = response.id;
+            document.getElementById('userName').value = response.name;
+
         });
     }
 

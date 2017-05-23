@@ -53,6 +53,11 @@
 <body>
 <%-- This will contain options to either Find A Beer or Add A Beer --%>
 
+<<<<<<< HEAD
+=======
+${loginName}
+
+>>>>>>> 210d55f76b7cdb1cc0f2941e6f87684cf68cd8e7
 
 <nav class="navbar navbar-default">
     <div class="container-fluid">
