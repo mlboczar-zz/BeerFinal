@@ -20,5 +20,11 @@
         <property name="description">
             <column name="description" sql-type="varchar(100)" length="100" not-null="true"/>
         </property>
+        <property name="beerRating">
+            <column name="beerRating" sql-type="varchar(45)" length="45" not-null="true"/>
+        </property>
+        <property name="beerFlavors">
+            <column name="beerFlavors" sql-type="varchar(45)" length="45" not-null="true"/>
+        </property>
     </class>
 </hibernate-mapping>
