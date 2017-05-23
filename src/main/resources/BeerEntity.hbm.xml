@@ -4,24 +4,21 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-     <class name="com.grandcircus.spring.models.BeerEntity" table="beer" schema="beer">
-        <id name="beerId" type="int" column="beerID">
-            <generator class="native"/>
+    <class name="com.grandcircus.spring.models.BeerEntity" table="beer" schema="beer">
+        <id name="beerId">
+            <column name="beerID" sql-type="int(11)"/>
         </id>
+        <property name="userId">
+            <column name="userID" sql-type="int(11)" not-null="true"/>
+        </property>
         <property name="beerName">
-            <column name="beerName" sql-type="varchar(45)" length="45"/>
+            <column name="beerName" sql-type="varchar(45)" length="45" not-null="true"/>
         </property>
         <property name="location">
             <column name="location" sql-type="varchar(45)" length="45" not-null="true"/>
         </property>
         <property name="beerType">
             <column name="beerType" sql-type="varchar(45)" length="45" not-null="true"/>
-        </property>
-        <property name="description">
-            <column name="description" sql-type="varchar(100)" length="100" not-null="true"/>
-        </property>
-        <property name="beerRating">
-            <column name="beerRating" sql-type="varchar(45)" length="45" not-null="true"/>
         </property>
         <property name="beerFlavors">
             <column name="beerFlavors" sql-type="varchar(45)" length="45" not-null="true"/>

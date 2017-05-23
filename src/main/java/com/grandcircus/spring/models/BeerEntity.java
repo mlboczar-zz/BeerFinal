@@ -12,12 +12,11 @@ public class BeerEntity {
     private String location;
     private int beerId;
     private String beerType;
-    private String description;
-    private String beerRating;
     private String beerFlavors;
+    private Integer userId;
 
     @Basic
-    @Column(name = "beerName", nullable = false, length = 45)
+    @Column(name = "beerName", nullable = true, length = 45)
     public String getBeerName() {
         return beerName;
     }
@@ -57,26 +56,6 @@ public class BeerEntity {
     }
 
     @Basic
-    @Column(name = "description", nullable = true, length = 100)
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    @Basic
-    @Column(name = "beerRating", nullable = true, length = 45)
-    public String getBeerRating() {
-        return beerRating;
-    }
-
-    public void setBeerRating(String beerRating) {
-        this.beerRating = beerRating;
-    }
-
-    @Basic
     @Column(name = "beerFlavors", nullable = true, length = 45)
     public String getBeerFlavors() {
         return beerFlavors;
@@ -97,8 +76,6 @@ public class BeerEntity {
         if (beerName != null ? !beerName.equals(that.beerName) : that.beerName != null) return false;
         if (location != null ? !location.equals(that.location) : that.location != null) return false;
         if (beerType != null ? !beerType.equals(that.beerType) : that.beerType != null) return false;
-        if (description != null ? !description.equals(that.description) : that.description != null) return false;
-        if (beerRating != null ? !beerRating.equals(that.beerRating) : that.beerRating != null) return false;
         if (beerFlavors != null ? !beerFlavors.equals(that.beerFlavors) : that.beerFlavors != null) return false;
 
         return true;
@@ -110,9 +87,17 @@ public class BeerEntity {
         result = 31 * result + (location != null ? location.hashCode() : 0);
         result = 31 * result + beerId;
         result = 31 * result + (beerType != null ? beerType.hashCode() : 0);
-        result = 31 * result + (description != null ? description.hashCode() : 0);
-        result = 31 * result + (beerRating != null ? beerRating.hashCode() : 0);
         result = 31 * result + (beerFlavors != null ? beerFlavors.hashCode() : 0);
         return result;
+    }
+
+    @Basic
+    @Column(name = "userID", nullable = true)
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 }
