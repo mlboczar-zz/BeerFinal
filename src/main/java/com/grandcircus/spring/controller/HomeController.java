@@ -18,6 +18,13 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class HomeController {
 
+
+    @RequestMapping("/fb")
+    public ModelAndView FBUserTest()
+    {
+        return new
+                ModelAndView("fbUserTest","hello","Hello Team!");
+    }
     @RequestMapping("/")
     public ModelAndView login()
     {
