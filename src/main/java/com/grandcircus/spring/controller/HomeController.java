@@ -55,16 +55,16 @@ public class HomeController {
         SessionFactory sessionFact = cfg.buildSessionFactory();
         Session session = sessionFact.openSession();
         Transaction tx = session.beginTransaction();
-        BeerreviewEntity newBeer = new BeerreviewEntity();
-        newBeer.setBeerId(beerID);
-        newBeer.setBeerDescription(description);
-        newBeer.setBeerRating(beerRating);
+        BeerreviewEntity newBeerReview = new BeerreviewEntity();
+        newBeerReview.setBeerId(beerID);
+        newBeerReview.setBeerDescription(description);
+        newBeerReview.setBeerRating(beerRating);
 
-        session.save(newBeer);
+        session.save(newBeerReview);
         tx.commit();
         session.close();
 
-        return new ModelAndView("addabeersuccess", "addingbeer", newBeer);
+        return new ModelAndView("addabeersuccess", "addingbeer", newBeerReview);
     }
 
     @RequestMapping("/findabeer")
