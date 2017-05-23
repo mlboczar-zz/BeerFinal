@@ -34,7 +34,7 @@
 <body>
 <%-- This will contain options to either Find A Beer or Add A Beer --%>
 
-
+${loginName}
 
 
 <nav class="navbar navbar-default">

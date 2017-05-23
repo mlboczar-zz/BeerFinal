@@ -20,10 +20,10 @@ public class HomeController {
 
 
     @RequestMapping("/fb")
-    public ModelAndView FBUserTest()
-    {
-        return new
-                ModelAndView("fbUserTest","hello","Hello Team!");
+        public ModelAndView FBUserTest()
+        {
+            return new
+                    ModelAndView("fbUserTest","hello","Hello Team!");
     }
     @RequestMapping("/")
     public ModelAndView login()
@@ -82,13 +82,14 @@ public class HomeController {
     }
 
     @RequestMapping("/useroptions")
-    public ModelAndView userOptions(@RequestParam("status") String id)
+    public ModelAndView userOptions(@RequestParam("status") String id ,  @RequestParam("userName") String name)
     {
         System.out.println("It was " + id);
 
         //set the FB_LOGIN_ID to the current user, using id passed from login.jsp
         FBLogin.FB_LOGIN_ID = id;
+        FBLogin.FB_LOGIN_NAME = name;
         return new
-                ModelAndView("useroptions","loginID",FBLogin.FB_LOGIN_ID);
+                ModelAndView("useroptions","loginName",FBLogin.FB_LOGIN_NAME);
     }
 }
