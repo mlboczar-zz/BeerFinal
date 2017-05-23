@@ -38,11 +38,11 @@
         <span class="caret"></span>
     </button>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-        <li><a href="location">Location</a></li>
-        <li><a href="description">Description</a></li>
+        <li><a href="#">Location</a></li>
+        <li><a href="#">Description</a></li>
     </ul>
 </div>
- 
+
 
 
 
