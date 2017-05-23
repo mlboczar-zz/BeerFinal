@@ -1,6 +1,7 @@
 package com.grandcircus.spring.controller;
 
 import com.grandcircus.spring.models.BeerEntity;
+import com.grandcircus.spring.models.BeerreviewEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -31,45 +32,40 @@ public class HomeController {
                 ModelAndView("login","hello","Hello Team!");
     }
 
+
     @RequestMapping("/addabeer")
     public String addABeer()
     {
         return "addabeer";
     }
 
-    //temporary while we get the below method to work
-    @RequestMapping("/addabeersuccess")
-    public String addABeerSuccess()
-    {
-        return "addabeersuccess";
-    }
-
-//    @RequestMapping("addabeersuccess")
-//    public ModelAndView addABeer(@RequestParam("beerName") String beerName,
-//                                @RequestParam("location") String location,
-//                                @RequestParam("beerType") String beerType,
-//                                @RequestParam("beerFlavors") String beerFlavors,
-//                                @RequestParam("beerDescription") String beerDescription,
-//                                @RequestParam("beerRating") String beerRating) {
-//
-//        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
-//        SessionFactory sessionFact = cfg.buildSessionFactory();
-//        Session session = sessionFact.openSession();
-//        Transaction tx = session.beginTransaction();
-//        BeerEntity newBeer = new BeerEntity();
-//        newBeer.setBeerName(beerName);
-//        newBeer.setLocation(location);
-//        newBeer.setBeerType(beerType);
-//        newBeer.setBeerFlavors(beerFlavors);
-//        newBeer.setDescription(beerDescription);
-//        newBeer.setBeerRating(beerRating);
-//
-//        session.save(newBeer);
-//        tx.commit();
-//        session.close();
-//
-//        return new ModelAndView("addabeersuccess", "addingbeer", newBeer);
+//    //temporary while we get the below method to work
+//    @RequestMapping("/addabeersuccess")
+//    public String addABeerSuccess()
+//    {
+//        return "addabeersuccess";
 //    }
+
+    @RequestMapping("addabeersuccess")
+    public ModelAndView addABeer(@RequestParam("beerID") int beerID,
+                                @RequestParam("beerDescription") String description,
+                                @RequestParam("beerRating") String beerRating) {
+
+        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+        SessionFactory sessionFact = cfg.buildSessionFactory();
+        Session session = sessionFact.openSession();
+        Transaction tx = session.beginTransaction();
+        BeerreviewEntity newBeer = new BeerreviewEntity();
+        newBeer.setBeerId(beerID);
+        newBeer.setBeerDescription(description);
+        newBeer.setBeerRating(beerRating);
+
+        session.save(newBeer);
+        tx.commit();
+        session.close();
+
+        return new ModelAndView("addabeersuccess", "addingbeer", newBeer);
+    }
 
     @RequestMapping("/findabeer")
     public ModelAndView findABeer()
@@ -86,9 +82,13 @@ public class HomeController {
     }
 
     @RequestMapping("/useroptions")
-    public ModelAndView userOptions()
+    public ModelAndView userOptions(@RequestParam("status") String id)
     {
+        System.out.println("It was " + id);
+
+        //set the FB_LOGIN_ID to the current user, using id passed from login.jsp
+        FBLogin.FB_LOGIN_ID = id;
         return new
-                ModelAndView("useroptions","hello","Hello Team!");
+                ModelAndView("useroptions","loginID",FBLogin.FB_LOGIN_ID);
     }
 }

@@ -32,10 +32,10 @@
         }
     }
 
-    // This function is called when someone finishes with the Login
-    // Button.  See the onlogin handler attached to it in the sample
-    // code below.
     function checkLoginState() {
+        // This function is called when someone finishes with the Login
+        // Button.  See the onlogin handler attached to it in the sample
+        // code below.
         FB.getLoginStatus(function(response) {
             statusChangeCallback(response);
         });
@@ -84,9 +84,19 @@
         FB.api('/me', function(response) {
             console.log('Successful login for: ' + response.name);
             document.getElementById('status').innerHTML =
-                'Thanks for logging in, ' + response.name + '!';
+                'Thanks for logging in, ' + response.id + '!';
         });
     }
+
+//    /* make the API call */
+//    FB.api(
+//        "/{user-id}",
+//        function (response) {
+//            if (response && !response.error) {
+//                /* handle the result */
+//            }
+//        }
+//    );
 </script>
 
 <!--

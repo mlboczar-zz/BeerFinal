@@ -9,28 +9,23 @@
 <html>
 <head>
     <title>Add A Beer</title>
+    <link href="../../resources/styles.css" rel="stylesheet">
+
 </head>
 <body>
 
 <form action="/addabeersuccess" method="post">
-    <table>
-        <tr>
-            <td>Beer Name</td>
-            <td><input type="text" name="beerName"><br></td>
-        </tr>
-        <tr>
-            <td>Location</td>
-            <td><input type="text" name="location"><br></td>
-        </tr>
-        <tr>
-            <td>Beer Type</td>
-            <td><input type="text" name="beerType"><br></td>
-        </tr>
-        <tr>
-            <td>Beer Flavors</td>
-            <td><input type="text" name="beerFlavors"><br></td>
-        </tr>
-    </table>
+    <h2>Choose a beer to rate</h2>
+
+    <div class="dropdown">
+        <button onclick="toggleDropdownContent()" class="dropbtn">Dropdown</button>
+        <div id="myDropdown" class="dropdown-content">
+            <input type="text" placeholder="Search..." id="myInput" onkeyup="filterFunction()">
+            <a>Oberon</a>
+            <a>Fat Tire</a>
+        </div>
+    </div>
+
     Beer Description<br>
     <input type="checkbox" name="beerDescription" value="bitter">Bitter<br>
     <input type="checkbox" name="beerDescription" value="bold">Bold<br>
@@ -53,8 +48,33 @@
     <input type="radio" name="beerRating" value="2"> 2<br>
     <input type="radio" name="beerRating" value="1"> 1<br>
 
+    <%--BeerID--%>
+    <%--<input type="text" name="beerID"><br>--%>
+
     <input type="submit" name="Add Beer"><br>
 
 </form>
+
+<script>
+    function toggleDropdownContent() {
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+    function filterFunction() {
+        var input, filter, ul, li, a, i;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        div = document.getElementById("myDropdown");
+        a = div.getElementsByTagName("a");
+        for (i = 0; i < a.length; i++) {
+            if (a[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+                a[i].style.display = "";
+            } else {
+                a[i].style.display = "none";
+            }
+        }
+    }
+</script>
+
 </body>
 </html>
