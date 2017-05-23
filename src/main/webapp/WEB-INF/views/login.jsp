@@ -87,6 +87,16 @@
                 'Thanks for logging in, ' + response.name + '!';
         });
     }
+
+//    /* make the API call */
+//    FB.api(
+//        "/{user-id}",
+//        function (response) {
+//            if (response && !response.error) {
+//                /* handle the result */
+//            }
+//        }
+//    );
 </script>
 
 <!--
