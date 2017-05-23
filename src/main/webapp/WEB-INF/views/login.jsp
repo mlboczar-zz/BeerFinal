@@ -12,7 +12,18 @@
     <title>Facebook Login For Beer App</title>
     <meta charset="UTF-8">
 </head>
+
 <body>
+<form action = "/useroptions" >
+    <input type="hidden" name = "status" id="status" value='${status}'/>
+    <input type="submit" value ="Go to User Options" name = "Submit" />
+</form>
+
+
+
+
+
+
 <script>
     // This is called with the results from from FB.getLoginStatus().
     function statusChangeCallback(response) {
@@ -83,21 +94,19 @@
         console.log('Welcome!  Fetching your information.... ');
         FB.api('/me', function(response) {
             console.log('Successful login for: ' + response.name);
-            document.getElementById('status').innerHTML =
-                'Thanks for logging in, ' + response.id + '!';
+            document.getElementById('ourDiv').innerHTML =
+                response.id;
+
+            document.getElementById('status').value = response.id;
         });
     }
 
-//    /* make the API call */
-//    FB.api(
-//        "/{user-id}",
-//        function (response) {
-//            if (response && !response.error) {
-//                /* handle the result */
-//            }
-//        }
-//    );
+
+
+
+
 </script>
+
 
 <!--
   Below we include the Login Button social plugin. This button uses
@@ -108,8 +117,10 @@
 <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
 </fb:login-button>
 
-<div id="status">
+<div id="ourDiv">
 </div>
+
+
 
 </body>
 </html>
