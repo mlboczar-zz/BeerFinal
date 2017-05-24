@@ -49,3 +49,12 @@
 .show {
     display: block;
 }
+
+#img1, #img2, #img3 {
+    height: 500px;
+    width: 100%;
+}
+
+#brand, #add, #find {
+    color: firebrick;
+}

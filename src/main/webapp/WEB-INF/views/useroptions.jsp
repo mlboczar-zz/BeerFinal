@@ -30,35 +30,31 @@
             crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <style>
-        #img1 {
+
+    <link href="../../resources/styles.css" rel="stylesheet">
+    <%--<style>
+        #img1, #img2, #img3 {
             height: 500px;
             width: 100%;
         }
-        #img2 {
-            height: 500px;
-            width: 100%;
-        }
-        #img3 {
-            height: 500px;
-            width: 100%;
-        }
-        #brand{
+        #brand, #add, #find {
             color: firebrick;
         }
 
-    </style>
+
+    </style>--%>
 
 </head>
 <body>
 <%-- This will contain options to either Find A Beer or Add A Beer --%>
 
-<<<<<<< HEAD
-=======
-${loginName}
-
->>>>>>> 210d55f76b7cdb1cc0f2941e6f87684cf68cd8e7
-
+<table>
+    <tr>
+        <td>Hello,</td>
+        <td>${loginName}</td>
+    </tr>
+</table>
+<br>
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -76,9 +72,9 @@ ${loginName}
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="#" style="color: firebrick">Add A Beer <span
+                <li class="active"><a id="add" href="#">Add A Beer <span
                         class="sr-only">(current)</span></a></li>
-                <li><a href="#" style="color: firebrick">Find A Beer</a></li>
+                <li><a id="find" href="#">Find A Beer</a></li>
             </ul>
 
             <%--<ul class="nav navbar-nav navbar-right">
@@ -87,7 +83,7 @@ ${loginName}
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
-<br>
+
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
@@ -105,15 +101,17 @@ ${loginName}
             </div>
         </div>
         <div class="item">
-            <img id="img2" src="https://images.pexels.com/photos/8800/snow-restaurant-mountains-sky.jpg?w=940&h=650&auto=compress&cs=tinysrgb"
-                 alt="..." >
+            <img id="img2"
+                 src="https://images.pexels.com/photos/8800/snow-restaurant-mountains-sky.jpg?w=940&h=650&auto=compress&cs=tinysrgb"
+                 alt="...">
             <div class="carousel-caption">
 
             </div>
         </div>
         <div class="item">
-            <img  id="img3" src="https://s-media-cache-ak0.pinimg.com/originals/82/18/8f/82188fc924cc756f55d6ca488a8d5ace.jpg"
-                 alt="..." >
+            <img id="img3"
+                 src="https://s-media-cache-ak0.pinimg.com/originals/82/18/8f/82188fc924cc756f55d6ca488a8d5ace.jpg"
+                 alt="...">
             <div class="carousel-caption">
 
             </div>
