@@ -39,7 +39,7 @@
     <input type="checkbox" name="beerDescription" value="refreshing">Refreshing<br>
     <input type="checkbox" name="beerDescription" value="rich">Rich<br>
     <input type="checkbox" name="beerDescription" value="smooth">Smooth<br>
-    <input type="checkbox" name="beerDescription" value="zesty">Zesty<br>
+    <input type="checkbox" name="beerDescription" value="zesty">Zesty<br><br>
     Beer Rating<br>
     <input type="radio" name="beerRating" value="5"> 5<br>
     <input type="radio" name="beerRating" value="4"> 4<br>
@@ -51,6 +51,8 @@
     <%--<input type="text" name="beerID"><br>--%>
 
     <input type="submit" name="Add Beer"><br>
+
+    <input type="hidden">
 
 </form>
 

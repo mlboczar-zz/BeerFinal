@@ -14,5 +14,8 @@
         <property name="beerRating">
             <column name="beerRating" sql-type="varchar(45)" length="45" not-null="true"/>
         </property>
+        <property name="beerId">
+            <column name="beerID" sql-type="int(11)"/>
+        </property>
     </class>
 </hibernate-mapping>

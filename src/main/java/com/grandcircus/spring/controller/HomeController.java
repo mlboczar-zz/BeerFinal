@@ -7,9 +7,12 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * Created by Megan on 5/8/2017.
@@ -48,8 +51,10 @@ public class HomeController {
 
     @RequestMapping("addabeersuccess")
     public ModelAndView addABeer(@RequestParam("beerID") int beerID,
-                                @RequestParam("beerDescription") String description,
-                                @RequestParam("beerRating") String beerRating) {
+                                 @RequestParam("beerDescription") String description,
+                                 @RequestParam("beerRating") String beerRating,
+                                 Model model,
+                                 HttpServletResponse response) {
 
         Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
         SessionFactory sessionFact = cfg.buildSessionFactory();
