@@ -14,10 +14,22 @@
 </head>
 
 <body>
+
+<h1> WELCOME TO FOURSCORE! </h1>
+
+
+${message}
 <form action = "/useroptions" >
-    <input type="hidden" name = "status" id="status" value='${status}'/>
-    <input type="hidden" name = "userName" id="userName" value='${userName}'/>
-    <input type="submit" value ="Go to User Options" name = "Submit" />
+<input type="hidden" name = "status" id="status" value='${status}'/>
+<input type="hidden" name = "userName" id="userName" value='${userName}'/>
+<input type="submit" value ="Go to User Options" name = "Submit" />
+
+</form>
+<form action = "/redirect" >
+    <input type="hidden" name = "status" id="status2" value='${status}'/>
+    <input type="hidden" name = "userName" id="userName2" value='${userName}'/>
+
+    <input type="submit" action="/redirect" value ="Sign Up" name = "Submit" />
 </form>
 
 
@@ -100,6 +112,8 @@
 
             document.getElementById('status').value = response.id;
             document.getElementById('userName').value = response.name;
+            document.getElementById('status2').value = response.id;
+            document.getElementById('userName2').value = response.name;
 
         });
     }
