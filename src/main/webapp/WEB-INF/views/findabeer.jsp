@@ -30,20 +30,11 @@
 
 </head>
 <body>
-<%-- This will contain two drop down menus. One for location, one for description of beer --%>
 
-<div class="dropdown">
-    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-        Dropdown
-        <span class="caret"></span>
-    </button>
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-        <li><a href="#">Location</a></li>
-        <li><a href="#">Description</a></li>
-    </ul>
-</div>
-
-
+<form action="/submitbeersearch" method="get">
+    <input type="text" name="beerName">
+    <input type="submit" value="search">
+</form>
 
 
 </body>

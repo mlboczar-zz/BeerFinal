@@ -2,10 +2,12 @@ package com.grandcircus.spring.controller;
 
 import com.grandcircus.spring.models.BeerEntity;
 import com.grandcircus.spring.models.BeerreviewEntity;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 
 /**
  * Created by Megan on 5/8/2017.
@@ -28,6 +31,7 @@ public class HomeController {
             return new
                     ModelAndView("fbUserTest","hello","Hello Team!");
     }
+
     @RequestMapping("/")
     public ModelAndView login()
     {
@@ -35,26 +39,16 @@ public class HomeController {
                 ModelAndView("login","hello","Hello Team!");
     }
 
-
     @RequestMapping("/addabeer")
     public String addABeer()
     {
         return "addabeer";
     }
 
-//    //temporary while we get the below method to work
-//    @RequestMapping("/addabeersuccess")
-//    public String addABeerSuccess()
-//    {
-//        return "addabeersuccess";
-//    }
-
     @RequestMapping("addabeersuccess")
     public ModelAndView addABeer(@RequestParam("beerID") int beerID,
                                  @RequestParam("beerDescription") String description,
-                                 @RequestParam("beerRating") String beerRating,
-                                 Model model,
-                                 HttpServletResponse response) {
+                                 @RequestParam("beerRating") String beerRating) {
 
         Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
         SessionFactory sessionFact = cfg.buildSessionFactory();
@@ -73,28 +67,24 @@ public class HomeController {
     }
 
     @RequestMapping("/findabeer")
-    public ModelAndView findABeer()
+    public String findABeer()
     {
-        return new
-                ModelAndView("findabeer","hello","Hello Team!");
+        return "findabeer";
     }
 
-    @RequestMapping("/findabeerresult")
-    public ModelAndView findABeerResult()
-    {
-        return new
-                ModelAndView("findabeerresult","hello","Hello Team!");
+    @RequestMapping("submitbeersearch")
+    public String dropdownMenu(@RequestParam("beerName") String beerName, Model model){
+
+        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+        SessionFactory sessionFact = cfg.buildSessionFactory();
+        Session session = sessionFact.openSession();
+        session.beginTransaction();
+        Criteria c = session.createCriteria(BeerEntity.class);
+
+        c.add(Restrictions.like("beerName","%" + beerName + "%"));
+        ArrayList<BeerEntity> beerList = (ArrayList<BeerEntity>) c.list();
+        model.addAttribute("bList", beerList);
+
+        return "findabeerresult";
     }
-
-
-
-
-
-
-
-
-
-
-
-
 }

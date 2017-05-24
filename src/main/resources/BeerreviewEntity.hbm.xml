@@ -17,5 +17,6 @@
         <property name="beerId">
             <column name="beerID" sql-type="int(11)"/>
         </property>
+
     </class>
 </hibernate-mapping>

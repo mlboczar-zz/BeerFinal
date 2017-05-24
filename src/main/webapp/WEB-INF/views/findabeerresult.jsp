@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Megan
@@ -11,7 +12,18 @@
     <title>Find A Beer Result</title>
 </head>
 <body>
-Thanks! This beer has been you tasted. <br>
+
+<table border="1">
+    <c:forEach var="beer" items="${bList}">
+        <tr>
+            <td>${beer.brewer}</td>
+            <td>${beer.beerName}</td>
+            <td>${beer.beerType}</td>
+            <td>${beer.beerFlavors}</td>
+        </tr>
+    </c:forEach>
+</table>
+Here's the information on your beer! <br>
 
 <a href="/">Back to List</a>
 
