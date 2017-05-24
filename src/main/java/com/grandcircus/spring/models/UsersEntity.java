@@ -3,21 +3,21 @@ package com.grandcircus.spring.models;
 import javax.persistence.*;
 
 /**
- * Created by Megan on 5/22/2017.
+ * Created by seandunn92 on 5/24/17.
  */
 @Entity
 @Table(name = "users", schema = "beer", catalog = "")
 public class UsersEntity {
-    private int userId;
+    private String userId;
     private String userName;
 
     @Id
-    @Column(name = "userID", nullable = false)
-    public int getUserId() {
+    @Column(name = "userID", nullable = false, length = 100)
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 
@@ -38,7 +38,7 @@ public class UsersEntity {
 
         UsersEntity that = (UsersEntity) o;
 
-        if (userId != that.userId) return false;
+        if (userId != null ? !userId.equals(that.userId) : that.userId != null) return false;
         if (userName != null ? !userName.equals(that.userName) : that.userName != null) return false;
 
         return true;
@@ -46,7 +46,7 @@ public class UsersEntity {
 
     @Override
     public int hashCode() {
-        int result = userId;
+        int result = userId != null ? userId.hashCode() : 0;
         result = 31 * result + (userName != null ? userName.hashCode() : 0);
         return result;
     }

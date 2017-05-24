@@ -1,8 +1,7 @@
 package com.grandcircus.spring.controller;
 
 
-import com.grandcircus.spring.models.BeerEntity;
-import com.grandcircus.spring.models.BeerreviewEntity;
+import com.grandcircus.spring.models.UsersEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -23,11 +22,29 @@ public class UserOptionsController {
     @RequestMapping("/useroptions")
     public ModelAndView userOptions(@RequestParam("status") String id ,  @RequestParam("userName") String name)
     {
-        System.out.println("It was " + id);
+
 
         //set the FB_LOGIN_ID to the current user, using id passed from login.jsp
         FBLogin.FB_LOGIN_ID = id;
         FBLogin.FB_LOGIN_NAME = name;
+
+        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");//copy from up
+
+        SessionFactory sessionFact = cfg.configure().buildSessionFactory();//copy from up
+        Session session = sessionFact.openSession();
+        Transaction tx = session.beginTransaction();
+
+        UsersEntity newUser = new UsersEntity();
+
+       newUser.setUserId(FBLogin.FB_LOGIN_ID +"s");
+        newUser.setUserName(FBLogin.FB_LOGIN_NAME);
+
+
+        session.save(newUser);
+        tx.commit();
+        session.close();
+
+
         return new
                 ModelAndView("useroptions","loginName",FBLogin.FB_LOGIN_NAME);
     }
