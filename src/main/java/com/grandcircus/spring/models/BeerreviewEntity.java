@@ -11,6 +11,7 @@ public class BeerreviewEntity {
     private int beerId;
     private String beerDescription;
     private String beerRating;
+    private int reviewId;
 
     @Id
     @Column(name = "beerID", nullable = false)
@@ -63,5 +64,15 @@ public class BeerreviewEntity {
         result = 31 * result + (beerDescription != null ? beerDescription.hashCode() : 0);
         result = 31 * result + (beerRating != null ? beerRating.hashCode() : 0);
         return result;
+    }
+
+    @Id
+    @Column(name = "reviewID", nullable = false)
+    public int getReviewId() {
+        return reviewId;
+    }
+
+    public void setReviewId(int reviewId) {
+        this.reviewId = reviewId;
     }
 }

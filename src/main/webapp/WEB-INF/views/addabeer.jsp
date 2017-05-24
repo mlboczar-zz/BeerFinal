@@ -15,7 +15,7 @@
 <body>
 
 <form action="/addabeersuccess" method="post">
-    
+
     <h4>Choose a beer to rate</h4>
 
     <select name="beerID">

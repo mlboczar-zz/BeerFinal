@@ -14,6 +14,7 @@ public class BeerEntity {
     private String beerType;
     private String beerFlavors;
     private Integer userId;
+    private String brewer;
 
     @Basic
     @Column(name = "beerName", nullable = true, length = 45)
@@ -99,5 +100,15 @@ public class BeerEntity {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
+    }
+
+    @Basic
+    @Column(name = "brewer", nullable = true, length = 45)
+    public String getBrewer() {
+        return brewer;
+    }
+
+    public void setBrewer(String brewer) {
+        this.brewer = brewer;
     }
 }
