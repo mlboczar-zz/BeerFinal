@@ -36,7 +36,7 @@ public class UserOptionsController {
 
         UsersEntity newUser = new UsersEntity();
 
-       newUser.setUserId(FBLogin.FB_LOGIN_ID +"s");
+       newUser.setUserId(FBLogin.FB_LOGIN_ID);
         newUser.setUserName(FBLogin.FB_LOGIN_NAME);
 
 
