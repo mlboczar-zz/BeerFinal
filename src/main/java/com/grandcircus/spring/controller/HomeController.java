@@ -86,15 +86,15 @@ public class HomeController {
                 ModelAndView("findabeerresult","hello","Hello Team!");
     }
 
-    @RequestMapping("/useroptions")
-    public ModelAndView userOptions(@RequestParam("status") String id ,  @RequestParam("userName") String name)
-    {
-        System.out.println("It was " + id);
 
-        //set the FB_LOGIN_ID to the current user, using id passed from login.jsp
-        FBLogin.FB_LOGIN_ID = id;
-        FBLogin.FB_LOGIN_NAME = name;
-        return new
-                ModelAndView("useroptions","loginName",FBLogin.FB_LOGIN_NAME);
-    }
+
+
+
+
+
+
+
+
+
+
 }
