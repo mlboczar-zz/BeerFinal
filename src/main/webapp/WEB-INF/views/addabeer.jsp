@@ -22,6 +22,10 @@
         <option value="4">Oberon</option>
         <option value="5">Fat Tire</option>
         <option value="6">All Day IPA</option>
+        <option value="7">Two-Hearted Ale</option>
+        <option value="8">Bell's Amber Ale</option>
+        <option value="9">Kentucky Breakfast Stout</option>
+        <option value="10">Dirty Bastard</option>
     </select>
     <br><br>
 
@@ -47,21 +51,10 @@
     <input type="radio" name="beerRating" value="2"> 2<br>
     <input type="radio" name="beerRating" value="1"> 1<br>
 
-    <%--BeerID--%>
-    <%--<input type="text" name="beerID"><br>--%>
+    <input type="text" name="userID">
 
     <input type="submit" name="Add Beer"><br>
-
-    <input type="hidden">
-
 </form>
-
-<script>
-    function toggleDropdownContent() {
-        document.getElementById("myDropdown").classList.toggle("show");
-    }
-
-</script>
 
 </body>
 </html>
