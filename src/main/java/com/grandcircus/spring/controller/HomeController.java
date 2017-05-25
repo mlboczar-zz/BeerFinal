@@ -36,7 +36,7 @@ public class HomeController {
     public ModelAndView login()
     {
         return new
-                ModelAndView("login","hello","Hello Team!");
+                ModelAndView("useroptions","loginName","Please Login and Refresh");
     }
 
     @RequestMapping("/addabeer")
