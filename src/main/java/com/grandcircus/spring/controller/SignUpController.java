@@ -29,6 +29,7 @@ public class SignUpController {
         FBLogin.FB_LOGIN_ID = id;
         FBLogin.FB_LOGIN_NAME = name;
 
+
         Configuration cfg = new Configuration().configure("hibernate.cfg.xml");//copy from up
 
         SessionFactory sessionFact = cfg.configure().buildSessionFactory();//copy from up
@@ -45,6 +46,7 @@ public class SignUpController {
         session.save(newUser);
         tx.commit();
         session.close();
+
 
 
         return new

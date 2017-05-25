@@ -20,10 +20,10 @@ import org.springframework.web.servlet.ModelAndView;
 public class UserOptionsController {
 
     @RequestMapping("/useroptions")
-    public ModelAndView userOptions(@RequestParam("status") String id ,  @RequestParam("userName") String name)
-    {
-        if (id.length()<1){
-            return new  ModelAndView("login","message","You did not log into facebook!");
+    public ModelAndView userOptions(@RequestParam("status") String id, @RequestParam("userName") String name) {
+
+        if (id.length() < 1) {
+            return new ModelAndView("login", "message", "You did not log into facebook!");
         }
 
         String greetingMessage ="Welcome to FourScore ";
@@ -40,7 +40,7 @@ public class UserOptionsController {
 
         UsersEntity newUser = new UsersEntity();
 
-       newUser.setUserId(FBLogin.FB_LOGIN_ID);
+        newUser.setUserId(FBLogin.FB_LOGIN_ID);
         newUser.setUserName(FBLogin.FB_LOGIN_NAME);
 
 try {
