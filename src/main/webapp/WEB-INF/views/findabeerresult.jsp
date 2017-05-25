@@ -25,7 +25,8 @@
 </table>
 Here's the information on your beer! <br>
 
-<a href="/">Back to List</a>
+<a href="/useroptions2">Back to Main Page</a> <br>
+<a href="/findabeer">Search for another beer</a> <br>
 
 
 </body>
