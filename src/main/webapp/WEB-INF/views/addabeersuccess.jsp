@@ -77,7 +77,7 @@
     <a href="/useroptions2">Back to Main Page</a>
 </div>
 <br>
-<div class="well"style="text-align: center;">
+<div class="well">
     <a href="/addabeer">Add another Beer</a>
 </div>
 
