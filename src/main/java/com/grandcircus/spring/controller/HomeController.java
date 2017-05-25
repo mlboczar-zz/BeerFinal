@@ -59,6 +59,7 @@ public class HomeController {
         newBeerReview.setBeerDescription(description);
         newBeerReview.setBeerRating(beerRating);
 
+
         session.save(newBeerReview);
         tx.commit();
         session.close();
