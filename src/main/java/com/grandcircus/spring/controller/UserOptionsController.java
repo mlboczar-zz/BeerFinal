@@ -22,7 +22,11 @@ public class UserOptionsController {
     @RequestMapping("/useroptions")
     public ModelAndView userOptions(@RequestParam("status") String id ,  @RequestParam("userName") String name)
     {
+        if (id.length()<1){
+            return new  ModelAndView("login","message","You did not log into facebook!");
+        }
 
+        String greetingMessage ="Welcome to FourScore ";
 
         //set the FB_LOGIN_ID to the current user, using id passed from login.jsp
         FBLogin.FB_LOGIN_ID = id;
@@ -39,14 +43,18 @@ public class UserOptionsController {
        newUser.setUserId(FBLogin.FB_LOGIN_ID);
         newUser.setUserName(FBLogin.FB_LOGIN_NAME);
 
-
-        session.save(newUser);
-        tx.commit();
-        session.close();
-
+try {
+    session.save(newUser);
+    tx.commit();
+    session.close();
+} catch (Exception e){
+    session.close();
+    greetingMessage = "Welcome Back ";
+}
 
         return new
-                ModelAndView("useroptions","loginName",FBLogin.FB_LOGIN_NAME);
+                ModelAndView("useroptions","loginName",
+                greetingMessage+ FBLogin.FB_LOGIN_NAME);
     }
 
 }
