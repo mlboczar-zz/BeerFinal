@@ -12,6 +12,17 @@ public class BeerreviewEntity {
     private String beerDescription;
     private String beerRating;
     private int reviewId;
+    private String userId;
+
+    @Id
+    @Column(name = "userID", nullable = false, length = 100)
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
     @Id
     @Column(name = "beerID", nullable = false)
@@ -50,6 +61,7 @@ public class BeerreviewEntity {
 
         BeerreviewEntity that = (BeerreviewEntity) o;
 
+        if (userId != null ? !userId.equals(that.userId) : that.userId != null) return false;
         if (beerId != that.beerId) return false;
         if (beerDescription != null ? !beerDescription.equals(that.beerDescription) : that.beerDescription != null)
             return false;
@@ -63,6 +75,7 @@ public class BeerreviewEntity {
         int result = beerId;
         result = 31 * result + (beerDescription != null ? beerDescription.hashCode() : 0);
         result = 31 * result + (beerRating != null ? beerRating.hashCode() : 0);
+        result = 31 * result + (userId != null ? userId.hashCode() : 0);
         return result;
     }
 

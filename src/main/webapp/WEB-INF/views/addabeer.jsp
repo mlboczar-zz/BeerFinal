@@ -51,7 +51,7 @@
     <input type="radio" name="beerRating" value="2"> 2<br>
     <input type="radio" name="beerRating" value="1"> 1<br>
 
-    <input type="text" name="userID">
+    <input type="hidden" name="userID" value="userId">
 
     <input type="submit" name="Add Beer"><br>
 </form>
