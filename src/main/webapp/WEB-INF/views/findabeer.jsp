@@ -32,17 +32,17 @@
 <body>
 
 <form action="searchbyname" method="get">
-    <input type="text" name="beerName" value="Search By Name">
+    <input type="text" name="beerName" placeholder="Search By Name">
     <input type="submit" value="search">
 </form>
 
 <form action="searchbybrewer" method="get">
-    <input type="text" name="brewer" value="Search By Brewer">
+    <input type="text" name="brewer" placeholder="Search By Brewer">
     <input type="submit" value="search">
 </form>
 
 <form action="searchbybeertype" method="get">
-    <input type="text" name="beerType" value="Search By Beer Type">
+    <input type="text" name="beerType" placeholder="Search By Beer Type">
     <input type="submit" value="search">
 </form>
 
