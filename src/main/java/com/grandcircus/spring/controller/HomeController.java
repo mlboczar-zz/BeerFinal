@@ -59,6 +59,8 @@ public class HomeController {
         newBeerReview.setBeerDescription(description);
         newBeerReview.setBeerRating(beerRating);
 
+        newBeerReview.setUserId(FBLogin.FB_LOGIN_ID);
+
 
         session.save(newBeerReview);
         tx.commit();
