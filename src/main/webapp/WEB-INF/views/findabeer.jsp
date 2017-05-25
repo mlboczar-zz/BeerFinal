@@ -31,10 +31,21 @@
 </head>
 <body>
 
-<form action="/submitbeersearch" method="get">
-    <input type="text" name="beerName">
+<form action="searchbyname" method="get">
+    <input type="text" name="beerName" value="Search By Name">
     <input type="submit" value="search">
 </form>
+
+<form action="searchbybrewer" method="get">
+    <input type="text" name="brewer" value="Search By Brewer">
+    <input type="submit" value="search">
+</form>
+
+<form action="searchbybeertype" method="get">
+    <input type="text" name="beerType" value="Search By Beer Type">
+    <input type="submit" value="search">
+</form>
+
 
 
 </body>

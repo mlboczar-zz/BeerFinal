@@ -72,8 +72,8 @@ public class HomeController {
         return "findabeer";
     }
 
-    @RequestMapping("submitbeersearch")
-    public String dropdownMenu(@RequestParam("beerName") String beerName, Model model){
+    @RequestMapping("searchbyname")
+    public String searchByName(@RequestParam("beerName") String beerName, Model model){
 
         Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
         SessionFactory sessionFact = cfg.buildSessionFactory();
@@ -82,6 +82,38 @@ public class HomeController {
         Criteria c = session.createCriteria(BeerEntity.class);
 
         c.add(Restrictions.like("beerName","%" + beerName + "%"));
+        ArrayList<BeerEntity> beerList = (ArrayList<BeerEntity>) c.list();
+        model.addAttribute("bList", beerList);
+
+        return "findabeerresult";
+    }
+
+    @RequestMapping("searchbybrewer")
+    public String searchByBrewer(@RequestParam("brewer") String brewer, Model model){
+
+        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+        SessionFactory sessionFact = cfg.buildSessionFactory();
+        Session session = sessionFact.openSession();
+        session.beginTransaction();
+        Criteria c = session.createCriteria(BeerEntity.class);
+
+        c.add(Restrictions.like("brewer","%" + brewer + "%"));
+        ArrayList<BeerEntity> beerList = (ArrayList<BeerEntity>) c.list();
+        model.addAttribute("bList", beerList);
+
+        return "findabeerresult";
+    }
+
+    @RequestMapping("searchbybeertype")
+    public String searchByBeerType(@RequestParam("beerType") String beerType, Model model){
+
+        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+        SessionFactory sessionFact = cfg.buildSessionFactory();
+        Session session = sessionFact.openSession();
+        session.beginTransaction();
+        Criteria c = session.createCriteria(BeerEntity.class);
+
+        c.add(Restrictions.like("beerType","%" + beerType + "%"));
         ArrayList<BeerEntity> beerList = (ArrayList<BeerEntity>) c.list();
         model.addAttribute("bList", beerList);
 
