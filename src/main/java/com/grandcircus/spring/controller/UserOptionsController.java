@@ -19,6 +19,16 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class UserOptionsController {
 
+    @RequestMapping("/useroptions2")
+    public ModelAndView userOptions2 (){
+        String greetingMessage = "Welcome Back";
+        return new
+                ModelAndView("useroptions","loginName",
+                FBLogin.FB_LOGIN_NAME + ", " + greetingMessage);
+         }
+
+
+
     @RequestMapping("/useroptions")
     public ModelAndView userOptions(@RequestParam("status") String id, @RequestParam("userName") String name) {
 
@@ -26,7 +36,7 @@ public class UserOptionsController {
             return new ModelAndView("login", "message", "You did not log into facebook!");
         }
 
-        String greetingMessage ="Welcome to FourScore ";
+        String greetingMessage ="Welcome to PourScore ";
 
         //set the FB_LOGIN_ID to the current user, using id passed from login.jsp
         FBLogin.FB_LOGIN_ID = id;

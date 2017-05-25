@@ -14,6 +14,6 @@
 <body>
 Thanks! This beer has been added to your database. <br>
 
-<a href="/useroptions">Back to List</a>
+<a href="/useroptions2">Back to List</a>
 </body>
 </html>
