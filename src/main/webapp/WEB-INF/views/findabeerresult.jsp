@@ -10,6 +10,13 @@
 <html>
 <head>
     <title>Find A Beer Result</title>
+
+    <style>
+        a{
+            text-decoration: none;
+        }
+    </style>
+
 </head>
 <body>
 
@@ -23,6 +30,7 @@
         </tr>
     </c:forEach>
 </table>
+
 Here's the information on your beer! <br>
 
 <a href="/useroptions2">Back to Main Page</a> <br>

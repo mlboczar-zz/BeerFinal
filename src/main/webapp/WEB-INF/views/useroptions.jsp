@@ -32,17 +32,7 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
     <link href="../../resources/styles.css" rel="stylesheet">
-    <%--<style>
-        #img1, #img2, #img3 {
-            height: 500px;
-            width: 100%;
-        }
-        #brand, #add, #find {
-            color: firebrick;
-        }
 
-
-    </style>--%>
 
 </head>
 <body>
