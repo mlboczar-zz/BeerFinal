@@ -54,7 +54,7 @@ try {
 
         return new
                 ModelAndView("useroptions","loginName",
-                greetingMessage+ FBLogin.FB_LOGIN_NAME);
+                FBLogin.FB_LOGIN_NAME + ", " + greetingMessage);
     }
 
 }
