@@ -168,15 +168,15 @@
 </fb:login-button>
 
 
-<script>
-    function checkForLogin() {
-        if(session.getAttribute("status")!=null && session.getAttribute("status").equals(true))
-        {
-            response.sendRedirect("addabeer.jsp");
-        }
-    }
-  checkForLogin();
-</script>
+<%--<script>--%>
+    <%--function checkForLogin() {--%>
+        <%--if(session.getAttribute("status")!=null && session.getAttribute("status").equals(true))--%>
+        <%--{--%>
+            <%--response.sendRedirect("addabeer.jsp");--%>
+        <%--}--%>
+    <%--}--%>
+  <%--checkForLogin();--%>
+<%--</script>--%>
 
    <div id="ourDiv">
    </div>
