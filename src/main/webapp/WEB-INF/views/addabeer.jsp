@@ -18,6 +18,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
           integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
@@ -26,6 +31,12 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
     <link href="../../resources/styles.css" rel="stylesheet">
+
+    <style>
+        select {
+            padding: 8px 8px 8px 8px;
+        }
+    </style>
 
 </head>
 <body>
@@ -60,116 +71,99 @@
     </div><!-- /.container-fluid -->
 </nav>
 
-
 <form action="/addabeersuccess" method="post">
+
+    <h3>Choose A Beer to Rate</h3>
+
     <fieldset>
-        <legend>Choose a beer to rate</legend>
-        <table>
-            <tr>
-                <td>Choose a beer:</td>
-                <td>
-                    <select name="beerID">
-                        <option value="4">Oberon</option>
-                        <option value="5">Fat Tire</option>
-                        <option value="6">All Day IPA</option>
-                        <option value="7">Two-Hearted Ale</option>
-                        <option value="8">Bell's Amber Ale</option>
-                        <option value="9">Kentucky Breakfast Stout</option>
-                        <option value="10">Dirty Bastard</option>
-                    </select>
-                </td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Beer Description:</td>
-                <td>
-                    <input type="checkbox" name="beerDescription" value="bitter"> Bold
-                    <input type="checkbox" name="beerDescription" value="bold"> Hoppy
-                    <input type="checkbox" name="beerDescription" value="creamy"> Light
-                    <input type="checkbox" name="beerDescription" value="fruity"> Zesty
-                    <input type="checkbox" name="beerDescription" value="hoppy"> Creamy
-                    <input type="checkbox" name="beerDescription" value="light"> Fruity
-                    <input type="checkbox" name="beerDescription" value="zesty"> Smooth
-                </td>
-            <tr>
-                <td></td>
-                <td>
-                    <input type="checkbox" name="beerDescription" value="crisp"> Rich
-                    <input type="checkbox" name="beerDescription" value="delicate"> Malty
-                    <input type="checkbox" name="beerDescription" value="floral"> Crisp
-                    <input type="checkbox" name="beerDescription" value="malty"> Bitter
-                    <input type="checkbox" name="beerDescription" value="refreshing"> Floral
-                    <input type="checkbox" name="beerDescription" value="rich"> Delicate
-                    <input type="checkbox" name="beerDescription" value="smooth"> Refreshing
-                </td>
-            </tr>
-            </tr>
-            <br>
-            <tr>
-                <td>Beer Rating:</td>
-                <td>
-                    <input type="radio" name="beerRating" value="5"> 5
-                    <input type="radio" name="beerRating" value="4"> 4
-                    <input type="radio" name="beerRating" value="3"> 3
-                </td>
-            <tr>
-                <td></td>
-                <td>
-                    <input type="radio" name="beerRating" value="2"> 2
-                    <input type="radio" name="beerRating" value="1"> 1
-                    <input type="radio" name="beerRating" value="0"> 0
-                </td>
-            </tr>
-            </tr><br>
-            <tr>
-                <td><input type="hidden" name="userID" value="userId"></td>
-                <td>
-                    <input type="submit" name="Add Beer">
-                </td>
-            </tr>
-        </table>
+        <legend>Choose a Beer:</legend>
+
+        <select name="beerID">
+            <option value="4">Oberon</option>
+            <option value="5">Fat Tire</option>
+            <option value="6">All Day IPA</option>
+            <option value="7">Two-Hearted Ale</option>
+            <option value="8">Bell's Amber Ale</option>
+            <option value="9">Kentucky Breakfast Stout</option>
+            <option value="10">Dirty Bastard</option>
+        </select>
     </fieldset>
+    <br>
+    <fieldset>
+        <legend>Beer Description:</legend>
+        <label for="checkbox-1">Bold</label>
+        <input type="checkbox" name="beerDescription" value="Bold" id="checkbox-1">
 
-    <%--<h4>Choose a beer to rate</h4>
+        <label for="checkbox-2">Hoppy</label>
+        <input type="checkbox" name="beerDescription" value="Hoppy" id="checkbox-2">
 
-    <select name="beerID">
-        <option value="4">Oberon</option>
-        <option value="5">Fat Tire</option>
-        <option value="6">All Day IPA</option>
-        <option value="7">Two-Hearted Ale</option>
-        <option value="8">Bell's Amber Ale</option>
-        <option value="9">Kentucky Breakfast Stout</option>
-        <option value="10">Dirty Bastard</option>
-    </select>
-    <br><br>
+        <label for="checkbox-3">Light</label>
+        <input type="checkbox" name="beerDescription" value="Light" id="checkbox-3">
 
-    Beer Description<br>
-    <input type="checkbox" name="beerDescription" value="bitter">Bitter<br>
-    <input type="checkbox" name="beerDescription" value="bold">Bold<br>
-    <input type="checkbox" name="beerDescription" value="creamy">Creamy<br>
-    <input type="checkbox" name="beerDescription" value="crisp">Crisp<br>
-    <input type="checkbox" name="beerDescription" value="delicate">Delicate<br>
-    <input type="checkbox" name="beerDescription" value="floral">Floral<br>
-    <input type="checkbox" name="beerDescription" value="fruity">Fruity<br>
-    <input type="checkbox" name="beerDescription" value="hoppy">Hoppy<br>
-    <input type="checkbox" name="beerDescription" value="light">Light<br>
-    <input type="checkbox" name="beerDescription" value="malty">Malty<br>
-    <input type="checkbox" name="beerDescription" value="refreshing">Refreshing<br>
-    <input type="checkbox" name="beerDescription" value="rich">Rich<br>
-    <input type="checkbox" name="beerDescription" value="smooth">Smooth<br>
-    <input type="checkbox" name="beerDescription" value="zesty">Zesty<br><br>
-    Beer Rating<br>
-    <input type="radio" name="beerRating" value="5"> 5<br>
-    <input type="radio" name="beerRating" value="4"> 4<br>
-    <input type="radio" name="beerRating" value="3"> 3<br>
-    <input type="radio" name="beerRating" value="2"> 2<br>
-    <input type="radio" name="beerRating" value="1"> 1<br>
+        <label for="checkbox-4">Zesty</label>
+        <input type="checkbox" name="beerDescription" value="Zesty" id="checkbox-4">
 
-    <input type="hidden" name="userID" value="userId">
+        <label for="checkbox-5">Creamy</label>
+        <input type="checkbox" name="beerDescription" value="Creamy" id="checkbox-5">
 
-    <input type="submit" name="Add Beer"><br>--%>
+        <label for="checkbox-6">Fruity</label>
+        <input type="checkbox" name="beerDescription" value="Fruity" id="checkbox-6">
+
+        <label for="checkbox-7">Smooth</label>
+        <input type="checkbox" name="beerDescription" value="Smooth" id="checkbox-7">
+        <br>
+        <label for="checkbox-8">Rich</label>
+        <input type="checkbox" name="beerDescription" value="Rich" id="checkbox-8">
+
+        <label for="checkbox-9">Malty</label>
+        <input type="checkbox" name="beerDescription" value="Malty" id="checkbox-9">
+
+        <label for="checkbox-10">Crisp</label>
+        <input type="checkbox" name="beerDescription" value="Crisp" id="checkbox-10">
+
+        <label for="checkbox-11">Bitter</label>
+        <input type="checkbox" name="beerDescription" value="Bitter" id="checkbox-11">
+
+        <label for="checkbox-12">Floral</label>
+        <input type="checkbox" name="beerDescription" value="Floral" id="checkbox-12">
+
+        <label for="checkbox-13">Delicate</label>
+        <input type="checkbox" name="beerDescription" value="Delicate" id="checkbox-13">
+
+        <label for="checkbox-14">Refreshing</label>
+        <input type="checkbox" name="beerDescription" value="Refreshing" id="checkbox-14">
+    </fieldset>
+    <br>
+    <fieldset>
+        <legend>Beer Rating:</legend>
+        <label for="radio-1">5 Star</label>
+        <input type="radio" name="beerRating" value="5" id="radio-1">
+        <label for="radio-2">4 Star</label>
+        <input type="radio" name="beerRating" value="4" id="radio-2">
+        <label for="radio-3">3 Star</label>
+        <input type="radio" name="beerRating" value="3" id="radio-3">
+        <label for="radio-4">2 Star</label>
+        <input type="radio" name="beerRating" value="2" id="radio-4">
+        <label for="radio-5">1 Star</label>
+        <input type="radio" name="beerRating" value="1" id="radio-5">
+    </fieldset>
+    <table>
+        <tr>
+            <td><input type="hidden" name="userID" value="userId"></td>
+            <td></td>
+            <td>
+                <button type="submit" class="btn btn-primary" name="Add Beer">Submit</button>
+                <%--<input type="submit" name="Add Beer">--%>
+            </td>
+        </tr>
+    </table>
 </form>
 
 </body>
+
+<script>
+    $(function () {
+        $("input").checkboxradio();
+    });
+</script>
 </html>
