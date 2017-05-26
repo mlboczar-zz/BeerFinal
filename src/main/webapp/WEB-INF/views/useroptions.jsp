@@ -33,7 +33,6 @@
 
     <link href="../../resources/styles.css" rel="stylesheet">
 
-
 </head>
 <body>
 <%-- This will contain options to either Find A Beer or Add A Beer --%>
@@ -46,10 +45,10 @@
 </table>
 <br>
 
-<form action = "/useroptions" >
-    <input type="hidden" name = "status" id="status" value='${status}'/>
-    <input type="hidden" name = "userName" id="userName" value='${userName}'/>
-    <input type="submit" value ="Refresh" name = "Submit" />
+<form action="/useroptions">
+    <input type="hidden" name="status" id="status" value='${status}'/>
+    <input type="hidden" name="userName" id="userName" value='${userName}'/>
+    <input type="submit" value="Refresh" name="Submit"/>
 
 </form>
 <%--<form action = "/redirect" >--%>
@@ -58,11 +57,6 @@
 
 <%--<input type="submit" action="/redirect" value ="Sign Up" name = "Submit" />--%>
 <%--</form>--%>
-
-
-
-
-
 
 <script>
     // This is called with the results from from FB.getLoginStatus().
@@ -87,18 +81,18 @@
         // This function is called when someone finishes with the Login
         // Button.  See the onlogin handler attached to it in the sample
         // code below.
-        FB.getLoginStatus(function(response) {
+        FB.getLoginStatus(function (response) {
             statusChangeCallback(response);
         });
     }
 
-    window.fbAsyncInit = function() {
+    window.fbAsyncInit = function () {
         FB.init({
-            appId      : '300195257082047',
-            cookie     : true,  // enable cookies to allow the server to access
-                                // the session
-            xfbml      : true,  // parse social plugins on this page
-            version    : 'v2.9' // use graph api version 2.8
+            appId: '300195257082047',
+            cookie: true,  // enable cookies to allow the server to access
+                           // the session
+            xfbml: true,  // parse social plugins on this page
+            version: 'v2.9' // use graph api version 2.8
         });
 
         // Now that we've initialized the JavaScript SDK, we call
@@ -113,17 +107,18 @@
         //
         // These three cases are handled in the callback function.
 
-        FB.getLoginStatus(function(response) {
+        FB.getLoginStatus(function (response) {
             statusChangeCallback(response);
         });
 
     };
 
     // Load the SDK asynchronously
-    (function(d, s, id) {
+    (function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
+        js = d.createElement(s);
+        js.id = id;
         js.src = "//connect.facebook.net/en_US/sdk.js";
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
@@ -132,7 +127,7 @@
     // successful.  See statusChangeCallback() for when this call is made.
     function testAPI() {
         console.log('Welcome!  Fetching your information.... ');
-        FB.api('/me', function(response) {
+        FB.api('/me', function (response) {
             console.log('Successful login for: ' + response.name);
             document.getElementById('ourDiv').innerHTML =
                 response.id;
@@ -144,10 +139,6 @@
 
         });
     }
-
-
-
-
 
 </script>
 
@@ -175,7 +166,8 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a id="brand" class="navbar-brand" href="#"><i class="fa fa-beer" aria-hidden="true"></i> Pour Score</a>
+            <a id="brand" class="navbar-brand" href="/useroptions2"><i class="fa fa-beer" aria-hidden="true"></i> Pour
+                Score</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -193,62 +185,54 @@
     </div><!-- /.container-fluid -->
 </nav>
 
-<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-    </ol>
+<div class="col-md-8 col-md-offset-2">
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+        </ol>
 
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner" role="listbox">
-        <div class="item active">
-            <img id="img1" src="https://i.ytimg.com/vi/eEPSO7JpHRg/maxresdefault.jpg" alt="...">
-            <div class="carousel-caption">
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <img id="img1" src="https://i.ytimg.com/vi/eEPSO7JpHRg/maxresdefault.jpg" alt="...">
+                <div class="carousel-caption">
 
+                </div>
             </div>
-        </div>
-        <div class="item">
-            <img id="img2"
-                 src="https://images.pexels.com/photos/8800/snow-restaurant-mountains-sky.jpg?w=940&h=650&auto=compress&cs=tinysrgb"
-                 alt="...">
-            <div class="carousel-caption">
-
+            <div class="item">
+                <img id="img2"
+                     src="https://images.pexels.com/photos/8800/snow-restaurant-mountains-sky.jpg?w=940&h=650&auto=compress&cs=tinysrgb"
+                     alt="...">
+                <div class="carousel-caption">
+                  <h1>Pour Score</h1>
+                    <p>Final project</p>
+                </div>
             </div>
-        </div>
-        <div class="item">
-            <img id="img3"
-                 src="https://s-media-cache-ak0.pinimg.com/originals/82/18/8f/82188fc924cc756f55d6ca488a8d5ace.jpg"
-                 alt="...">
-            <div class="carousel-caption">
+            <div class="item">
+                <img id="img3"
+                     src="https://s-media-cache-ak0.pinimg.com/originals/82/18/8f/82188fc924cc756f55d6ca488a8d5ace.jpg"
+                     alt="...">
+                <div class="carousel-caption">
 
+                </div>
             </div>
+
         </div>
 
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
     </div>
-
-    <!-- Controls -->
-    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
 </div>
 
-<%--
-<h1>Welcome to your Page!</h1>
-
-&lt;%&ndash;<p><a href="/addABeer">Add a Beer to your wishlist!</a></p><br>
-<p><a href="/findABeer">Find a Beer you already tasted it!</a></p><br>&ndash;%&gt;
-
-<p>Do you want to add a Beer? Click me! <button> <a href="/addABeer">Add A Beer</a></button></p><br>
-
-<p>Do you want to find a Beer that you have already tasted it? Click me!<button> <a href="/findABeer">Find A Beer</a></button></p>
-
---%>
 </body>
 </html>

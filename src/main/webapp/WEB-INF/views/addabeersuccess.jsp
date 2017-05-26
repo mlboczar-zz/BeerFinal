@@ -27,15 +27,16 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
     <link href="../../resources/styles.css" rel="stylesheet">
-<style>
-    .well{
-    text-align: center;
-    color: firebrick;
-    }
-    a{
-        color: firebrick;
-    }
-</style>
+    <style>
+        .well {
+            text-align: center;
+            color: firebrick;
+        }
+
+        a {
+            color: firebrick;
+        }
+    </style>
 
 </head>
 <body>
@@ -51,7 +52,8 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a id="brand" class="navbar-brand" href="#"><i class="fa fa-beer" aria-hidden="true"></i> Pour Score</a>
+            <a id="brand" class="navbar-brand" href="/useroptions2"><i class="fa fa-beer" aria-hidden="true"></i> Pour
+                Score</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->

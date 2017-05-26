@@ -55,7 +55,8 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a id="brand" class="navbar-brand" href="#"><i class="fa fa-beer" aria-hidden="true"></i> Pour Score</a>
+            <a id="brand" class="navbar-brand" href="/useroptions2"><i class="fa fa-beer" aria-hidden="true"></i> Pour
+                Score</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->

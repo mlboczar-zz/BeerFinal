@@ -20,7 +20,10 @@
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
     <link href="../../resources/styles.css" rel="stylesheet">
 
@@ -38,7 +41,8 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a id="brand" class="navbar-brand" href="#"><i class="fa fa-beer" aria-hidden="true"></i> Pour Score</a>
+            <a id="brand" class="navbar-brand" href="/useroptions2"><i class="fa fa-beer" aria-hidden="true"></i> Pour
+                Score</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -58,8 +62,76 @@
 
 
 <form action="/addabeersuccess" method="post">
+    <fieldset>
+        <legend>Choose a beer to rate</legend>
+        <table>
+            <tr>
+                <td>Choose a beer:</td>
+                <td>
+                    <select name="beerID">
+                        <option value="4">Oberon</option>
+                        <option value="5">Fat Tire</option>
+                        <option value="6">All Day IPA</option>
+                        <option value="7">Two-Hearted Ale</option>
+                        <option value="8">Bell's Amber Ale</option>
+                        <option value="9">Kentucky Breakfast Stout</option>
+                        <option value="10">Dirty Bastard</option>
+                    </select>
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Beer Description:</td>
+                <td>
+                    <input type="checkbox" name="beerDescription" value="bitter"> Bold
+                    <input type="checkbox" name="beerDescription" value="bold"> Hoppy
+                    <input type="checkbox" name="beerDescription" value="creamy"> Light
+                    <input type="checkbox" name="beerDescription" value="fruity"> Zesty
+                    <input type="checkbox" name="beerDescription" value="hoppy"> Creamy
+                    <input type="checkbox" name="beerDescription" value="light"> Fruity
+                    <input type="checkbox" name="beerDescription" value="zesty"> Smooth
+                </td>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="checkbox" name="beerDescription" value="crisp"> Rich
+                    <input type="checkbox" name="beerDescription" value="delicate"> Malty
+                    <input type="checkbox" name="beerDescription" value="floral"> Crisp
+                    <input type="checkbox" name="beerDescription" value="malty"> Bitter
+                    <input type="checkbox" name="beerDescription" value="refreshing"> Floral
+                    <input type="checkbox" name="beerDescription" value="rich"> Delicate
+                    <input type="checkbox" name="beerDescription" value="smooth"> Refreshing
+                </td>
+            </tr>
+            </tr>
+            <br>
+            <tr>
+                <td>Beer Rating:</td>
+                <td>
+                    <input type="radio" name="beerRating" value="5"> 5
+                    <input type="radio" name="beerRating" value="4"> 4
+                    <input type="radio" name="beerRating" value="3"> 3
+                </td>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="radio" name="beerRating" value="2"> 2
+                    <input type="radio" name="beerRating" value="1"> 1
+                    <input type="radio" name="beerRating" value="0"> 0
+                </td>
+            </tr>
+            </tr><br>
+            <tr>
+                <td><input type="hidden" name="userID" value="userId"></td>
+                <td>
+                    <input type="submit" name="Add Beer">
+                </td>
+            </tr>
+        </table>
+    </fieldset>
 
-    <h4>Choose a beer to rate</h4>
+    <%--<h4>Choose a beer to rate</h4>
 
     <select name="beerID">
         <option value="4">Oberon</option>
@@ -96,7 +168,7 @@
 
     <input type="hidden" name="userID" value="userId">
 
-    <input type="submit" name="Add Beer"><br>
+    <input type="submit" name="Add Beer"><br>--%>
 </form>
 
 </body>
