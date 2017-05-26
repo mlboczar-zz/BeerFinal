@@ -15,14 +15,14 @@
 
 <body>
 
-<h1> WELCOME TO FOURSCORE! </h1>
+<h1> WELCOME TO POURSCORE! </h1>
 
 
 ${message}
 <form action = "/useroptions" >
 <input type="hidden" name = "status" id="status" value='${status}'/>
 <input type="hidden" name = "userName" id="userName" value='${userName}'/>
-<input type="submit" value ="Go to User Options" name = "Submit" />
+<input type="submit"  id = "loginSubmit" value ="Go to User Options" name = "loginSubmit" />
 
 </form>
 <%--<form action = "/redirect" >--%>
@@ -38,6 +38,8 @@ ${message}
 
 
 <script>
+
+
     // This is called with the results from from FB.getLoginStatus().
     function statusChangeCallback(response) {
         console.log('statusChangeCallback');
@@ -112,6 +114,10 @@ ${message}
 
             document.getElementById('status').value = response.id;
             document.getElementById('userName').value = response.name;
+
+
+
+
 //            document.getElementById('status2').value = response.id;
 //            document.getElementById('userName2').value = response.name;
 
@@ -136,6 +142,7 @@ ${message}
 
 <div id="ourDiv">
 </div>
+
 
 
 
