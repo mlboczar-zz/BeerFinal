@@ -35,10 +35,6 @@
 
 </head>
 <body>
-<%-- This will contain options to either Find A Beer or Add A Beer --%>
-
-
-
 
 <table>
     <tr>
@@ -52,23 +48,7 @@
     <input type="hidden" name="status" id="status" value='${status}'/>
     <input type="hidden" name="userName" id="userName" value='${userName}'/>
     <input type="submit" value="Refresh" name="Submit"/>
-
 </form>
-<%--<form action = "/redirect" >--%>
-<%--<input type="hidden" name = "status" id="status2" value='${status}'/>--%>
-<%--<input type="hidden" name = "userName" id="userName2" value='${userName}'/>--%>
-
-<%--<input type="submit" action="/redirect" value ="Sign Up" name = "Submit" />--%>
-<%--</form>--%>
-
-
-
-
-
-
-
-
-
 
 
 <script>
@@ -155,32 +135,8 @@
 
 </script>
 
-
-
-
-
-
-
-
-
-
 <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
 </fb:login-button>
-
-
-<%--<script>--%>
-    <%--function checkForLogin() {--%>
-        <%--if(session.getAttribute("status")!=null && session.getAttribute("status").equals(true))--%>
-        <%--{--%>
-            <%--response.sendRedirect("addabeer.jsp");--%>
-        <%--}--%>
-    <%--}--%>
-  <%--checkForLogin();--%>
-<%--</script>--%>
-
-   <div id="ourDiv">
-   </div>
-
 
 <nav class="navbar navbar-default">
     <div class="container-fluid">
@@ -203,11 +159,8 @@
                 <li class="active"><a id="add" href="/addabeer">Add A Beer <span
                         class="sr-only">(current)</span></a></li>
                 <li><a id="find" href="/findabeer">Find A Beer</a></li>
+                <li><a id="see" href="/seemybeers">See What I've Rated</a></li>
             </ul>
-
-            <%--<ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Find A Beer</a></li>
-            </ul>--%>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
@@ -234,7 +187,7 @@
                      src="https://images.pexels.com/photos/8800/snow-restaurant-mountains-sky.jpg?w=940&h=650&auto=compress&cs=tinysrgb"
                      alt="...">
                 <div class="carousel-caption">
-                  <h1>Pour Score</h1>
+                    <h1>Pour Score</h1>
                     <p>Final project</p>
                 </div>
             </div>
@@ -270,18 +223,20 @@
 <div id="shareBtn" class="btn btn-success clearfix">Share</div>
 
 <p style="margin-top: 50px">
-<hr />
-<a class="btn btn-small"  href="https://developers.facebook.com/docs/sharing/reference/share-dialog">Share Dialog Documentation</a>
+<hr/>
+<a class="btn btn-small" href="https://developers.facebook.com/docs/sharing/reference/share-dialog">Share Dialog
+    Documentation</a>
 </p>
 
 <script>
-    document.getElementById('shareBtn').onclick = function() {
+    document.getElementById('shareBtn').onclick = function () {
         FB.ui({
             method: 'share',
             display: 'popup',
             //replace with actual website Link
             href: 'https://google.com',
-        }, function(response){});
+        }, function (response) {
+        });
     }
 </script>
 

@@ -58,15 +58,29 @@ public class HomeController {
         newBeerReview.setBeerId(beerID);
         newBeerReview.setBeerDescription(description);
         newBeerReview.setBeerRating(beerRating);
-
         newBeerReview.setUserId(FBLogin.FB_LOGIN_ID);
-
 
         session.save(newBeerReview);
         tx.commit();
         session.close();
 
         return new ModelAndView("addabeersuccess", "addingbeer", newBeerReview);
+    }
+
+    @RequestMapping("/seemybeers")
+    public String seeMyBeers (Model model){
+
+        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+        SessionFactory sessionFact = cfg.buildSessionFactory();
+        Session session = sessionFact.openSession();
+        session.beginTransaction();
+        Criteria c = session.createCriteria(BeerreviewEntity.class);
+
+        c.add(Restrictions.like("userId","%" + FBLogin.FB_LOGIN_ID + "%"));
+        ArrayList<BeerreviewEntity> beerReviewList = (ArrayList<BeerreviewEntity>) c.list();
+        model.addAttribute("bList", beerReviewList);
+
+        return "seemybeers";
     }
 
     @RequestMapping("/findabeer")
