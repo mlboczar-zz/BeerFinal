@@ -37,6 +37,9 @@
 <body>
 <%-- This will contain options to either Find A Beer or Add A Beer --%>
 
+
+
+
 <table>
     <tr>
         <td>Hello,</td>
@@ -57,6 +60,16 @@
 
 <%--<input type="submit" action="/redirect" value ="Sign Up" name = "Submit" />--%>
 <%--</form>--%>
+
+
+
+
+
+
+
+
+
+
 
 <script>
     // This is called with the results from from FB.getLoginStatus().
@@ -143,17 +156,31 @@
 </script>
 
 
-<!--
-  Below we include the Login Button social plugin. This button uses
-  the JavaScript SDK to present a graphical Login button that triggers
-  the FB.login() function when clicked.
--->
+
+
+
+
+
+
+
 
 <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
 </fb:login-button>
 
-<div id="ourDiv">
-</div>
+
+<script>
+    function checkForLogin() {
+        if(session.getAttribute("status")!=null && session.getAttribute("status").equals(true))
+        {
+            response.sendRedirect("addabeer.jsp");
+        }
+    }
+  checkForLogin();
+</script>
+
+   <div id="ourDiv">
+   </div>
+
 
 <nav class="navbar navbar-default">
     <div class="container-fluid">
@@ -233,6 +260,30 @@
         </a>
     </div>
 </div>
+
+<div class="page-header">
+    <h3>Share PourScore with your friends</h3>
+</div>
+
+<p>Like our app? Share it with your friends!</p>
+
+<div id="shareBtn" class="btn btn-success clearfix">Share</div>
+
+<p style="margin-top: 50px">
+<hr />
+<a class="btn btn-small"  href="https://developers.facebook.com/docs/sharing/reference/share-dialog">Share Dialog Documentation</a>
+</p>
+
+<script>
+    document.getElementById('shareBtn').onclick = function() {
+        FB.ui({
+            method: 'share',
+            display: 'popup',
+            //replace with actual website Link
+            href: 'https://google.com',
+        }, function(response){});
+    }
+</script>
 
 </body>
 </html>
