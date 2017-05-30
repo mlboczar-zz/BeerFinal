@@ -50,9 +50,8 @@ public class HomeController {
     }
 
     @RequestMapping("/reviewabeer")
-    public String reviewABeer(@RequestParam("status") String id, @RequestParam("name") String name) {
-        FBLogin.FB_LOGIN_NAME=name;
-        FBLogin.FB_LOGIN_ID=id;
+    public String reviewABeer() {
+       
         return "reviewabeer";
     }
 
@@ -199,10 +198,10 @@ public class HomeController {
     }
 
     @RequestMapping("addabeersuccess")
-    public ModelAndView addABeer (@RequestParam("brewer") String brewer,
-                                @RequestParam("beerName") String beerName,
-                                @RequestParam("beerType") String beerType,
-                                @RequestParam ("beerFlavors") String beerFlavors) {
+    public ModelAndView addABeer(@RequestParam("brewer") String brewer,
+                                 @RequestParam("beerName") String beerName,
+                                 @RequestParam("beerType") String beerType,
+                                 @RequestParam("beerFlavors") String beerFlavors) {
 
         Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
         SessionFactory sessionFact = cfg.buildSessionFactory();
