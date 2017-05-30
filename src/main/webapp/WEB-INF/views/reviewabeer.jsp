@@ -40,7 +40,7 @@
         form {
             margin: 0 auto;
             width: 50%;
-            border: 25px solid firebrick;
+            border: 5px solid firebrick;
             padding: 15px;
         }
 
@@ -48,7 +48,7 @@
             text-align: center;
         }
 
-        h1, h4,{
+        h1, h4{
             color: firebrick;
         }
         #find, #see{

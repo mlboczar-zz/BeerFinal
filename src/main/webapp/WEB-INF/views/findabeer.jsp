@@ -35,6 +35,13 @@
         #find, #see {
             color: firebrick;
         }
+        form {
+            margin: 0 auto;
+            width: 100%;
+            border: 5px solid firebrick;
+            padding: 15px;
+        }
+
     </style>
 
 </head>
