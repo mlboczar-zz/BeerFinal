@@ -33,6 +33,12 @@
 
     <link href="../../resources/styles.css" rel="stylesheet">
 
+    <style>
+        #find, #see, #review{
+            color: firebrick;
+        }
+    </style>
+
 </head>
 <body>
 
@@ -198,7 +204,7 @@
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
             <div class="item active">
-                <img id="img1" src="https://i.ytimg.com/vi/eEPSO7JpHRg/maxresdefault.jpg" alt="...">
+                <img id="img1" src="https://slack-imgs.com/?c=1&url=https%3A%2F%2Fcdn.pixabay.com%2Fphoto%2F2014%2F08%2F26%2F15%2F35%2Fbeer-428121_960_720.jpg" alt="...">
                 <div class="carousel-caption">
 
                 </div>
