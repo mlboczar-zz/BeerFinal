@@ -40,26 +40,24 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/verifyage", method = RequestMethod.POST)
-    public ModelAndView login(@RequestParam("age") Integer age) {
+    public String login(@RequestParam("age") Integer age) {
         final Integer AGELIMIT = 21;
         if (age >= AGELIMIT){
-            return new
-                    ModelAndView("useroptions", "loginName", "Please Login and Refresh");
+            return "useroptions";
         } else {
-            return new
-                    ModelAndView("userage", "status", "Invalid");
+            return "userage";
         }
     }
 
-    @RequestMapping("/addabeer")
-    public String addABeer() {
-        return "addabeer";
+    @RequestMapping("/reviewabeer")
+    public String reviewABeer() {
+        return "reviewabeer";
     }
 
-    @RequestMapping("addabeersuccess")
-    public ModelAndView addABeer(@RequestParam("beerID") int beerID,
-                                 @RequestParam("beerDescription") String description,
-                                 @RequestParam("beerRating") String beerRating) {
+    @RequestMapping("reviewabeersuccess")
+    public ModelAndView reviewABeer(@RequestParam("beerID") int beerID,
+                                    @RequestParam("beerDescription") String description,
+                                    @RequestParam("beerRating") String beerRating) {
 
         Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
         SessionFactory sessionFact = cfg.buildSessionFactory();
@@ -75,7 +73,7 @@ public class HomeController {
         tx.commit();
         session.close();
 
-        return new ModelAndView("addabeersuccess", "addingbeer", newBeerReview);
+        return new ModelAndView("reviewabeersuccess", "addingbeer", newBeerReview);
     }
 
     @RequestMapping("/seemybeers")

@@ -23,7 +23,6 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
@@ -161,7 +160,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a id="add" href="/addabeer">Add A Beer <span
+                <li class="active"><a id="add" href="/reviewabeer">Review A Beer <span
                         class="sr-only">(current)</span></a></li>
                 <li><a id="find" href="/findabeer">Find A Beer</a></li>
                 <li><a id="see" href="/seemybeers">See What I've Rated</a></li>

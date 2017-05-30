@@ -77,7 +77,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a id="add" href="/addabeer">Add A Beer <span
+                <li class="active"><a id="add" href="/reviewabeer">Review A Beer <span
                         class="sr-only">(current)</span></a></li>
                 <li><a id="find" href="/findabeer">Find A Beer</a></li>
                 <li><a id="see" href="/seemybeers">See What I've Rated</a></li>
@@ -87,7 +87,7 @@
     </div><!-- /.container-fluid -->
 </nav>
 
-<form action="/addabeersuccess" method="post">
+<form action="/reviewabeersuccess" method="post">
 
     <h1>Choose A Beer to Rate</h1>
 
