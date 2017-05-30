@@ -27,7 +27,7 @@
 
     <link href="../../resources/styles.css" rel="stylesheet">
     <style>
-        #find, #see{
+        #find, #see {
             color: firebrick;
         }
     </style>
@@ -65,13 +65,14 @@
     </div><!-- /.container-fluid -->
 </nav>
 <table border="1">
+    <tr>
+        <td>Brewer</td>
+        <td>Beer Name</td>
+        <td>Beer Type</td>
+        <td>Beer Description</td>
+        <td>Beer Rating</td>
+    </tr>
     <c:forEach var="beerreview" items="${bList}">
-        <tr>
-            <td>User ID</td>
-            <td>Beer ID</td>
-            <td>Beer Description</td>
-            <td>Beer Rating</td>
-        </tr>
         <tr>
             <td>${beerreview.brewer}</td>
             <td>${beerreview.beerName}</td>

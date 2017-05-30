@@ -28,23 +28,20 @@ import java.util.List;
 
 @Controller
 public class HomeController {
-    private static final Integer AGELIMIT = 21;
-
-    @RequestMapping("/fb")
-    public ModelAndView FBUserTest() {
-        return new
-                ModelAndView("fbUserTest", "hello", "Hello Team!");
-    }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    /*public String addUserInput(@ModelAttribute UserAge userage, Model model) {*/
     public String addUserInput() {
         return "userage";
     }
 
+    @RequestMapping("/fb")
+    public String FBUserTest() {
+        return "fbUserTest";
+    }
+
     @RequestMapping(value = "/verifyage", method = RequestMethod.POST)
     public ModelAndView login(@RequestParam("age") Integer age) {
-        System.out.println(age);
+        final Integer AGELIMIT = 21;
         if (age >= AGELIMIT){
             return new
                     ModelAndView("useroptions", "loginName", "Please Login and Refresh");
@@ -91,16 +88,7 @@ public class HomeController {
         Query query = session.createSQLQuery("select br.beerDescription, br.beerRating, b.brewer, b.beerName, b.beerType, b.beerFlavors from beerreview as br, beer as b where br.beerID = b.beerID and br.userID=:userID").setResultTransformer(Transformers.aliasToBean(ReviewList.class));
         query.setString("userID", FBLogin.FB_LOGIN_ID);
         List<ReviewList> beerReviewList = query.list();
-        System.out.println(beerReviewList.size());
-        System.out.println(beerReviewList.get(0).getBeerDescription());
-
-
-//        Criteria c = session.createCriteria(BeerreviewEntity.class);
-
-//        c.add(Restrictions.like("userId", "%" + FBLogin.FB_LOGIN_ID + "%"));
-//        ArrayList<BeerreviewEntity> beerReviewList = (ArrayList<BeerreviewEntity>) c.list();
         model.addAttribute("bList", beerReviewList);
-
 
         return "seemybeers";
     }
