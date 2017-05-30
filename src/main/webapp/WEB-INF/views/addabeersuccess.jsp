@@ -33,7 +33,7 @@
             color: firebrick;
         }
 
-        a {
+        a, #find, #see {
             color: firebrick;
         }
     </style>
@@ -62,11 +62,9 @@
                 <li class="active"><a id="add" href="/addabeer">Add A Beer <span
                         class="sr-only">(current)</span></a></li>
                 <li><a id="find" href="/findabeer">Find A Beer</a></li>
+                <li><a id="see" href="/seemybeers">See What I've Rated</a></li>
             </ul>
 
-            <%--<ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Find A Beer</a></li>
-            </ul>--%>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>

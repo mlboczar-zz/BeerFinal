@@ -36,6 +36,24 @@
         select {
             padding: 8px 8px 8px 8px;
         }
+
+        form {
+            margin: 0 auto;
+            width: 50%;
+            border: 25px solid firebrick;
+            padding: 15px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        h1, h4,{
+            color: firebrick;
+        }
+        #find, #see{
+            color: firebrick;
+        }
     </style>
 
 </head>
@@ -62,21 +80,19 @@
                 <li class="active"><a id="add" href="/addabeer">Add A Beer <span
                         class="sr-only">(current)</span></a></li>
                 <li><a id="find" href="/findabeer">Find A Beer</a></li>
+                <li><a id="see" href="/seemybeers">See What I've Rated</a></li>
             </ul>
 
-            <%--<ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Find A Beer</a></li>
-            </ul>--%>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
 
 <form action="/addabeersuccess" method="post">
 
-    <h3>Choose A Beer to Rate</h3>
+    <h1>Choose A Beer to Rate</h1>
 
     <fieldset>
-        <legend>Choose a Beer:</legend>
+        <h4>Choose a Beer :</h4>
 
         <select name="beerID">
             <option value="4">Oberon</option>
@@ -90,7 +106,7 @@
     </fieldset>
     <br>
     <fieldset>
-        <legend>Beer Description:</legend>
+        <h4>Beer Description :</h4>
         <label for="checkbox-1">Bold</label>
         <input type="checkbox" name="beerDescription" value="Bold" id="checkbox-1">
 
@@ -135,7 +151,7 @@
     </fieldset>
     <br>
     <fieldset>
-        <legend>Beer Rating:</legend>
+        <h4>Beer Rating :</h4>
         <label for="radio-1">5 Star</label>
         <input type="radio" name="beerRating" value="5" id="radio-1">
         <label for="radio-2">4 Star</label>
@@ -153,7 +169,6 @@
             <td></td>
             <td>
                 <button type="submit" class="btn btn-primary" name="Add Beer">Submit</button>
-                <%--<input type="submit" name="Add Beer">--%>
             </td>
         </tr>
     </table>
