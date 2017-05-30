@@ -32,7 +32,7 @@
 
     <link href="../../resources/styles.css" rel="stylesheet">
     <style>
-        #find, #see{
+        #find, #see, #review{
             color: firebrick;
         }
     </style>

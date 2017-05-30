@@ -33,7 +33,7 @@
             color: firebrick;
         }
 
-        a, #find, #see {
+        a, #find, #see, #review {
             color: firebrick;
         }
     </style>

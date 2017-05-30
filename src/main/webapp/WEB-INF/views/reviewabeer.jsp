@@ -52,7 +52,7 @@
         h1, h4{
             color: firebrick;
         }
-        #find, #see{
+        #find, #see, #review{
             color: firebrick;
         }
     </style>
