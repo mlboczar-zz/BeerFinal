@@ -137,11 +137,11 @@
 //            document.getElementById('status2').value = response.id;
 //            document.getElementById('userName2').value = response.name;
 
-            document.getElementById('see').setAttribute("href","/seemybeers1?status=" +response.id
+            document.getElementById('see').setAttribute("href","/seemybeers1?status=" +"g" +response.id
                 +"&name=" + response.name);
-            document.getElementById('add').setAttribute("href","/addabeer1?status=" +response.id
+            document.getElementById('add').setAttribute("href","/addabeer1?status=" +"g" + response.id
                 +"&name=" + response.name);
-            document.getElementById('find').setAttribute("href","/findabeer1?status=" +response.id
+            document.getElementById('find').setAttribute("href","/findabeer1?status=" +"g" + response.id
                 +"&name=" + response.name);
             document.getElementById('review').setAttribute("href","/reviewabeer1?status=" +response.id
                 +"&name=" + response.name);

@@ -34,10 +34,7 @@ public class HomeController {
         return "userage";
     }
 
-    @RequestMapping("/fb")
-    public String FBUserTest() {
-        return "fbUserTest";
-    }
+
 
     @RequestMapping(value = "/verifyage", method = RequestMethod.POST)
     public String login(@RequestParam("age") Integer age) {
@@ -168,5 +165,29 @@ public class HomeController {
         return new
                 ModelAndView("addabeersuccess", "addbeer", newBeer);
     }
+    
+    @RequestMapping("/useroptions2")
+    public ModelAndView userOptions2 (){
+        String greetingMessage = "Welcome Back";
+        return new
+                ModelAndView("useroptions","loginName",
+                FBLogin.FB_LOGIN_NAME + ", " + greetingMessage);
+    }
+
+
+
+    @RequestMapping("/useroptions")
+    public ModelAndView userOptions(){
+
+
+        String greetingMessage ="Welcome to PourScore ";
+
+
+
+        return new
+                ModelAndView("useroptions","loginName",
+                FBLogin.FB_LOGIN_NAME + ", " + greetingMessage);
+    }
+
 }
 
