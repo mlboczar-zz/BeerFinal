@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Megan
@@ -77,8 +78,8 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a id="add" href="/reviewabeer">Review A Beer <span
-                        class="sr-only">(current)</span></a></li>
+                <li><a id="add" href="/addabeer">Add A Beer</a></li>
+                <li><a id="review" href="/reviewabeer">Review A Beer</a></li>
                 <li><a id="find" href="/findabeer">Find A Beer</a></li>
                 <li><a id="see" href="/seemybeers">See What I've Rated</a></li>
             </ul>
@@ -93,7 +94,6 @@
 
     <fieldset>
         <h4>Choose a Beer :</h4>
-
         <select name="beerID">
             <option value="4">Oberon</option>
             <option value="5">Fat Tire</option>
@@ -102,6 +102,7 @@
             <option value="8">Bell's Amber Ale</option>
             <option value="9">Kentucky Breakfast Stout</option>
             <option value="10">Dirty Bastard</option>
+            <option value="11">Bollywood Blonde</option>
         </select>
     </fieldset>
     <br>

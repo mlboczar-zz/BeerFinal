@@ -139,10 +139,10 @@ public class HomeController {
     }
 
     @RequestMapping("addabeersuccess")
-    public ModelAndView addABeer (@RequestParam("brewer") String brewer,
-                                @RequestParam("beerName") String beerName,
-                                @RequestParam("beerType") String beerType,
-                                @RequestParam ("beerFlavors") String beerFlavors) {
+    public ModelAndView addABeer(@RequestParam("brewer") String brewer,
+                                 @RequestParam("beerName") String beerName,
+                                 @RequestParam("beerType") String beerType,
+                                 @RequestParam("beerFlavors") String beerFlavors) {
 
         Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
         SessionFactory sessionFact = cfg.buildSessionFactory();
