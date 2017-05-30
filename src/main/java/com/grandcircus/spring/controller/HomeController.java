@@ -51,7 +51,7 @@ public class HomeController {
 
     @RequestMapping("/reviewabeer")
     public String reviewABeer() {
-       
+
         return "reviewabeer";
     }
 
