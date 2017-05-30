@@ -17,10 +17,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.hibernate.Query;
+
 import java.util.ArrayList;
 import java.util.List;
-
-//import javax.servlet.http.HttpServletResponse;
 
 /**
  * Created by Megan on 5/8/2017.
@@ -42,7 +41,7 @@ public class HomeController {
     @RequestMapping(value = "/verifyage", method = RequestMethod.POST)
     public String login(@RequestParam("age") Integer age) {
         final Integer AGELIMIT = 21;
-        if (age >= AGELIMIT){
+        if (age >= AGELIMIT) {
             return "useroptions";
         } else {
             return "userage";
@@ -132,6 +131,33 @@ public class HomeController {
         Session session = sessionFact.openSession();
         session.beginTransaction();
         return session.createCriteria(BeerEntity.class);
+    }
+
+    @RequestMapping("addabeer")
+    public String addABeer() {
+        return "addabeer";
+    }
+
+    @RequestMapping("addabeersuccess")
+    public ModelAndView addABeer (@RequestParam("brewer") String brewer,
+                                @RequestParam("beerName") String beerName,
+                                @RequestParam("beerType") String beerType,
+                                @RequestParam ("beerFlavors") String beerFlavors) {
+
+        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+        SessionFactory sessionFact = cfg.buildSessionFactory();
+        Session session = sessionFact.openSession();
+        Transaction tx = session.beginTransaction();
+        BeerEntity newBeer = new BeerEntity();
+        newBeer.setBrewer(brewer);
+        newBeer.setBeerName(beerName);
+        newBeer.setBeerType(beerType);
+        newBeer.setBeerFlavors(beerFlavors);
+        session.save(newBeer);
+        tx.commit();
+        session.close();
+        return new
+                ModelAndView("addabeersuccess", "addbeer", newBeer);
     }
 }
 
