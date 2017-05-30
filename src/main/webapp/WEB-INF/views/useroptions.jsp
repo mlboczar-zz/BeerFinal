@@ -143,6 +143,9 @@
                 +"&name=" + response.name);
             document.getElementById('find').setAttribute("href","/findabeer1?status=" +response.id
                 +"&name=" + response.name);
+            document.getElementById('review').setAttribute("href","/reviewabeer1?status=" +response.id
+                +"&name=" + response.name);
+
 
         });
     }
