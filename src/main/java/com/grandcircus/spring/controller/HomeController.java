@@ -2,20 +2,23 @@ package com.grandcircus.spring.controller;
 
 import com.grandcircus.spring.models.BeerEntity;
 import com.grandcircus.spring.models.BeerreviewEntity;
+import com.grandcircus.spring.models.ReviewList;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.transform.Transformers;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
+import org.hibernate.Query;
 import java.util.ArrayList;
+import java.util.List;
 
 //import javax.servlet.http.HttpServletResponse;
 
@@ -25,8 +28,6 @@ import java.util.ArrayList;
 
 @Controller
 public class HomeController {
-
-
     private static final Integer AGELIMIT = 21;
 
     @RequestMapping("/fb")
@@ -35,12 +36,11 @@ public class HomeController {
                 ModelAndView("fbUserTest", "hello", "Hello Team!");
     }
 
-    /*@RequestMapping("/")
-    public ModelAndView login()
-    {
-        return new
-                ModelAndView("useroptions","loginName","Please Login and Refresh");
-    }*/
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    /*public String addUserInput(@ModelAttribute UserAge userage, Model model) {*/
+    public String addUserInput() {
+        return "userage";
+    }
 
     @RequestMapping(value = "/verifyage", method = RequestMethod.POST)
     public ModelAndView login(@RequestParam("age") Integer age) {
@@ -48,11 +48,10 @@ public class HomeController {
         if (age >= AGELIMIT){
             return new
                     ModelAndView("useroptions", "loginName", "Please Login and Refresh");
-        }else{
+        } else {
             return new
                     ModelAndView("userage", "status", "Invalid");
         }
-
     }
 
     @RequestMapping("/addabeer")
@@ -89,11 +88,19 @@ public class HomeController {
         SessionFactory sessionFact = cfg.buildSessionFactory();
         Session session = sessionFact.openSession();
         session.beginTransaction();
-        Criteria c = session.createCriteria(BeerreviewEntity.class);
+        Query query = session.createSQLQuery("select br.beerDescription, br.beerRating, b.brewer, b.beerName, b.beerType, b.beerFlavors from beerreview as br, beer as b where br.beerID = b.beerID and br.userID=:userID").setResultTransformer(Transformers.aliasToBean(ReviewList.class));
+        query.setString("userID", FBLogin.FB_LOGIN_ID);
+        List<ReviewList> beerReviewList = query.list();
+        System.out.println(beerReviewList.size());
+        System.out.println(beerReviewList.get(0).getBeerDescription());
 
-        c.add(Restrictions.like("userId", "%" + FBLogin.FB_LOGIN_ID + "%"));
-        ArrayList<BeerreviewEntity> beerReviewList = (ArrayList<BeerreviewEntity>) c.list();
+
+//        Criteria c = session.createCriteria(BeerreviewEntity.class);
+
+//        c.add(Restrictions.like("userId", "%" + FBLogin.FB_LOGIN_ID + "%"));
+//        ArrayList<BeerreviewEntity> beerReviewList = (ArrayList<BeerreviewEntity>) c.list();
         model.addAttribute("bList", beerReviewList);
+
 
         return "seemybeers";
     }
@@ -105,13 +112,7 @@ public class HomeController {
 
     @RequestMapping("searchbyname")
     public String searchByName(@RequestParam("beerName") String beerName, Model model) {
-
-        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
-        SessionFactory sessionFact = cfg.buildSessionFactory();
-        Session session = sessionFact.openSession();
-        session.beginTransaction();
-        Criteria c = session.createCriteria(BeerEntity.class);
-
+        Criteria c = createSession();
         c.add(Restrictions.like("beerName", "%" + beerName + "%"));
         ArrayList<BeerEntity> beerList = (ArrayList<BeerEntity>) c.list();
         model.addAttribute("bList", beerList);
@@ -121,13 +122,7 @@ public class HomeController {
 
     @RequestMapping("searchbybrewer")
     public String searchByBrewer(@RequestParam("brewer") String brewer, Model model) {
-
-        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
-        SessionFactory sessionFact = cfg.buildSessionFactory();
-        Session session = sessionFact.openSession();
-        session.beginTransaction();
-        Criteria c = session.createCriteria(BeerEntity.class);
-
+        Criteria c = createSession();
         c.add(Restrictions.like("brewer", "%" + brewer + "%"));
         ArrayList<BeerEntity> beerList = (ArrayList<BeerEntity>) c.list();
         model.addAttribute("bList", beerList);
@@ -137,13 +132,7 @@ public class HomeController {
 
     @RequestMapping("searchbybeertype")
     public String searchByBeerType(@RequestParam("beerType") String beerType, Model model) {
-
-        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
-        SessionFactory sessionFact = cfg.buildSessionFactory();
-        Session session = sessionFact.openSession();
-        session.beginTransaction();
-        Criteria c = session.createCriteria(BeerEntity.class);
-
+        Criteria c = createSession();
         c.add(Restrictions.like("beerType", "%" + beerType + "%"));
         ArrayList<BeerEntity> beerList = (ArrayList<BeerEntity>) c.list();
         model.addAttribute("bList", beerList);
@@ -151,12 +140,12 @@ public class HomeController {
         return "findabeerresult";
     }
 
-
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    /*public String addUserInput(@ModelAttribute UserAge userage, Model model) {*/
-        public String addUserInput() {
-
-            return "userage";
+    private static Criteria createSession() {
+        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+        SessionFactory sessionFact = cfg.buildSessionFactory();
+        Session session = sessionFact.openSession();
+        session.beginTransaction();
+        return session.createCriteria(BeerEntity.class);
     }
 }
 

@@ -21,8 +21,9 @@
             <td>Beer Rating</td>
         </tr>
         <tr>
-            <td>${beerreview.userId}</td>
-            <td>${beerreview.beerId}</td>
+            <td>${beerreview.brewer}</td>
+            <td>${beerreview.beerName}</td>
+            <td>${beerreview.beerType}</td>
             <td>${beerreview.beerDescription}</td>
             <td>${beerreview.beerRating}</td>
 
