@@ -95,14 +95,9 @@
     <fieldset>
         <h4>Choose a Beer :</h4>
         <select name="beerID">
-            <option value="4">Oberon</option>
-            <option value="5">Fat Tire</option>
-            <option value="6">All Day IPA</option>
-            <option value="7">Two-Hearted Ale</option>
-            <option value="8">Bell's Amber Ale</option>
-            <option value="9">Kentucky Breakfast Stout</option>
-            <option value="10">Dirty Bastard</option>
-            <option value="11">Bollywood Blonde</option>
+            <c:forEach items = "${requestScope.beersList}" var ="beer">
+            <option value="${beer.beerId}">${beer.beerName}</option>
+            </c:forEach>
         </select>
     </fieldset>
     <br>
