@@ -3,6 +3,7 @@ package com.grandcircus.spring.controller;
 import com.grandcircus.spring.models.BeerEntity;
 import com.grandcircus.spring.models.BeerreviewEntity;
 import com.grandcircus.spring.models.ReviewList;
+import com.grandcircus.spring.models.UsersEntity;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -49,7 +50,9 @@ public class HomeController {
     }
 
     @RequestMapping("/reviewabeer")
-    public String reviewABeer() {
+    public String reviewABeer(@RequestParam("status") String id, @RequestParam("name") String name) {
+        FBLogin.FB_LOGIN_NAME=name;
+        FBLogin.FB_LOGIN_ID=id;
         return "reviewabeer";
     }
 
@@ -92,8 +95,42 @@ public class HomeController {
 
     @RequestMapping("/findabeer")
     public String findABeer() {
+
+
         return "findabeer";
     }
+
+
+//    @RequestMapping("/redirect")
+//    public String Redirect(@RequestParam("status") String id,
+//                           @RequestParam("name") String name,
+//                           @RequestParam("page") String page) {
+//        FBLogin.FB_LOGIN_NAME=name;
+//        FBLogin.FB_LOGIN_ID=id;
+//
+//        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+//        SessionFactory sessionFact = cfg.buildSessionFactory();
+//        Session session = sessionFact.openSession();
+//        //session.beginTransaction();
+//        Transaction tx = session.beginTransaction();
+//
+//        UsersEntity newUser = new UsersEntity();
+//
+//        newUser.setUserId(FBLogin.FB_LOGIN_ID);
+//        newUser.setUserName(FBLogin.FB_LOGIN_NAME);
+//
+//        try {
+//            session.save(newUser);
+//            tx.commit();
+//            session.close();
+//        } catch (Exception e){
+//            session.close();
+//
+//        }
+
+//
+//        return page;
+//    }
 
     @RequestMapping("searchbyname")
     public String searchByName(@RequestParam("beerName") String beerName, Model model) {
@@ -135,6 +172,29 @@ public class HomeController {
 
     @RequestMapping("addabeer")
     public String addABeer() {
+//        FBLogin.FB_LOGIN_NAME=name;
+//        FBLogin.FB_LOGIN_ID=id;
+//
+//        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+//        SessionFactory sessionFact = cfg.buildSessionFactory();
+//        Session session = sessionFact.openSession();
+//       // session.beginTransaction();
+//        Transaction tx = session.beginTransaction();
+//
+//        UsersEntity newUser = new UsersEntity();
+//
+//        newUser.setUserId(FBLogin.FB_LOGIN_ID);
+//        newUser.setUserName(FBLogin.FB_LOGIN_NAME);
+//
+//        try {
+//            session.save(newUser);
+//            tx.commit();
+//            session.close();
+//        } catch (Exception e){
+//            session.close();
+//
+//        }
+
         return "addabeer";
     }
 

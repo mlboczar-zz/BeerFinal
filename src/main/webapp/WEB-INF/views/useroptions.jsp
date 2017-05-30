@@ -23,6 +23,7 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
+
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
@@ -31,11 +32,6 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
     <link href="../../resources/styles.css" rel="stylesheet">
-    <style>
-        #find, #see{
-            color: firebrick;
-        }
-    </style>
 
 </head>
 <body>
@@ -48,11 +44,11 @@
 </table>
 <br>
 
-<form action="/useroptions">
-    <input type="hidden" name="status" id="status" value='${status}'/>
-    <input type="hidden" name="userName" id="userName" value='${userName}'/>
-    <input type="submit" value="Refresh" name="Submit"/>
-</form>
+<%--<form action="/useroptions">--%>
+    <%--<input type="hidden" name="status" id="status" value='${status}'/>--%>
+    <%--<input type="hidden" name="userName" id="userName" value='${userName}'/>--%>
+    <%--<input type="submit" value="Refresh" name="Submit"/>--%>
+<%--</form>--%>
 
 
 <script>
@@ -129,18 +125,33 @@
             document.getElementById('ourDiv').innerHTML =
                 response.id;
 
-            document.getElementById('status').value = response.id;
-            document.getElementById('userName').value = response.name;
+//            document.getElementById('status').value = response.id;
+//
+//            document.getElementById('userName').value = response.name;
 //            document.getElementById('status2').value = response.id;
 //            document.getElementById('userName2').value = response.name;
 
+            document.getElementById('see').setAttribute("href","/seemybeers1?status=" +response.id
+                +"&name=" + response.name);
+            document.getElementById('add').setAttribute("href","/addabeer1?status=" +response.id
+                +"&name=" + response.name);
+            document.getElementById('find').setAttribute("href","/findabeer1?status=" +response.id
+                +"&name=" + response.name);
+
         });
     }
+
+//    function refreshPage(){
+//        location.reload();
+//    }
 
 </script>
 
 <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
 </fb:login-button>
+
+<div id="ourDiv">
+</div>
 
 <nav class="navbar navbar-default">
     <div class="container-fluid">
@@ -160,9 +171,9 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a id="add" href="/reviewabeer">Review A Beer <span
+                <li class="active"><a id="add" href="/addabeer">Add A Beer <span
                         class="sr-only">(current)</span></a></li>
-                <li><a id="find" href="/findabeer">Find A Beer</a></li>
+                <li><a id="find" href="/findabeer">Find A Beer</a><</li>
                 <li><a id="see" href="/seemybeers">See What I've Rated</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
