@@ -29,25 +29,9 @@ public class FirstTimeUser {
         FBLogin.FB_LOGIN_NAME=name;
         FBLogin.FB_LOGIN_ID=id;
 
-        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
-        SessionFactory sessionFact = cfg.buildSessionFactory();
-        Session session = sessionFact.openSession();
+        Session session = getSession();
         //session.beginTransaction();
-        Transaction tx = session.beginTransaction();
-
-        UsersEntity newUser = new UsersEntity();
-
-        newUser.setUserId(FBLogin.FB_LOGIN_ID);
-        newUser.setUserName(FBLogin.FB_LOGIN_NAME);
-
-        try {
-            session.save(newUser);
-            tx.commit();
-            session.close();
-        } catch (Exception e){
-            session.close();
-
-        }
+        probeDatabase(session);
 
 
         return "findabeer";
@@ -60,25 +44,9 @@ public class FirstTimeUser {
         FBLogin.FB_LOGIN_NAME=name;
         FBLogin.FB_LOGIN_ID=id;
 
-        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
-        SessionFactory sessionFact = cfg.buildSessionFactory();
-        Session session = sessionFact.openSession();
+        Session session = getSession();
         //session.beginTransaction();
-        Transaction tx = session.beginTransaction();
-
-        UsersEntity newUser = new UsersEntity();
-
-        newUser.setUserId(FBLogin.FB_LOGIN_ID);
-        newUser.setUserName(FBLogin.FB_LOGIN_NAME);
-
-        try {
-            session.save(newUser);
-            tx.commit();
-            session.close();
-        } catch (Exception e){
-            session.close();
-
-        }
+        probeDatabase(session);
 
 
         return "reviewabeer";
@@ -91,25 +59,9 @@ public class FirstTimeUser {
         FBLogin.FB_LOGIN_NAME=name;
         FBLogin.FB_LOGIN_ID=id;
 
-        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
-        SessionFactory sessionFact = cfg.buildSessionFactory();
-        Session session = sessionFact.openSession();
+        Session session = getSession();
         //session.beginTransaction();
-        Transaction tx = session.beginTransaction();
-
-        UsersEntity newUser = new UsersEntity();
-
-        newUser.setUserId(FBLogin.FB_LOGIN_ID);
-        newUser.setUserName(FBLogin.FB_LOGIN_NAME);
-
-        try {
-            session.save(newUser);
-            tx.commit();
-            session.close();
-        } catch (Exception e){
-            session.close();
-
-        }
+        probeDatabase(session);
 
 
         return "addabeer";
@@ -122,10 +74,20 @@ public class FirstTimeUser {
         FBLogin.FB_LOGIN_NAME=name;
         FBLogin.FB_LOGIN_ID=id;
 
-        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
-        SessionFactory sessionFact = cfg.buildSessionFactory();
-        Session session = sessionFact.openSession();
+        Session session = getSession();
         //session.beginTransaction();
+        probeDatabase(session);
+
+        Query query = session.createSQLQuery("select br.beerDescription, br.beerRating, b.brewer, b.beerName, b.beerType, b.beerFlavors from beerreview as br, beer as b where br.beerID = b.beerID and br.userID=:userID").setResultTransformer(Transformers.aliasToBean(ReviewList.class));
+        query.setString("userID", FBLogin.FB_LOGIN_ID);
+        List<ReviewList> beerReviewList = query.list();
+        model.addAttribute("bList", beerReviewList);
+
+        session.close();
+        return "seemybeers";
+    }
+
+    private void probeDatabase(Session session) {
         Transaction tx = session.beginTransaction();
 
         UsersEntity newUser = new UsersEntity();
@@ -138,19 +100,16 @@ public class FirstTimeUser {
             tx.commit();
 
         } catch (Exception e){
-
+            System.out.println("User was already in database");
 
         }
-
-        Query query = session.createSQLQuery("select br.beerDescription, br.beerRating, b.brewer, b.beerName, b.beerType, b.beerFlavors from beerreview as br, beer as b where br.beerID = b.beerID and br.userID=:userID").setResultTransformer(Transformers.aliasToBean(ReviewList.class));
-        query.setString("userID", FBLogin.FB_LOGIN_ID);
-        List<ReviewList> beerReviewList = query.list();
-        model.addAttribute("bList", beerReviewList);
-
-        session.close();
-        return "seemybeers";
     }
 
+    private Session getSession() {
+        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+        SessionFactory sessionFact = cfg.buildSessionFactory();
+        return sessionFact.openSession();
+    }
 
 
 }

@@ -85,7 +85,8 @@ public class HomeController {
         SessionFactory sessionFact = cfg.buildSessionFactory();
         Session session = sessionFact.openSession();
         session.beginTransaction();
-        Query query = session.createSQLQuery("select br.beerDescription, br.beerRating, b.brewer, b.beerName, b.beerType, b.beerFlavors from beerreview as br, beer as b where br.beerID = b.beerID and br.userID=:userID").setResultTransformer(Transformers.aliasToBean(ReviewList.class));
+        Query query = session.createSQLQuery("select br.beerDescription, br.beerRating, b.brewer, b.beerName, " +
+                "b.beerType, b.beerFlavors from beerreview as br, beer as b where br.beerID = b.beerID and br.userID=:userID").setResultTransformer(Transformers.aliasToBean(ReviewList.class));
         query.setString("userID", FBLogin.FB_LOGIN_ID);
         List<ReviewList> beerReviewList = query.list();
         model.addAttribute("bList", beerReviewList);
@@ -165,7 +166,7 @@ public class HomeController {
         return new
                 ModelAndView("addabeersuccess", "addbeer", newBeer);
     }
-    
+
     @RequestMapping("/useroptions2")
     public ModelAndView userOptions2 (){
         String greetingMessage = "Welcome Back";
