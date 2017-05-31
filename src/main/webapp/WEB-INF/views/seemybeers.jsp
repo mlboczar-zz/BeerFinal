@@ -171,7 +171,7 @@
             method: 'share',
             display: 'popup',
             //replace with actual website Link
-            href: 'http://sample-env.n6vihjcqng.us-east-2.elasticbeanstalk.com/seemybeers1?status=10213748205206463&name=Sean%20C%20Dunn'
+            href: document.URL
         }, function (response) {
         });
     }
