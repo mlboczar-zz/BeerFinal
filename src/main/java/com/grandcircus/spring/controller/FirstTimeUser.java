@@ -67,7 +67,11 @@ public class FirstTimeUser {
     public String seeMyBeer1(@RequestParam("status") String id,
                              @RequestParam("name") String name, Model model) {
 
+        FBLogin.FB_LOGIN_NAME = name;
+        FBLogin.FB_LOGIN_ID = id;
         Session session = getSession();
+        probeDatabase(session);
+
         Query query = session.createSQLQuery("select br.beerDescription, br.beerRating, b.brewer, b.beerName, b.beerType, b.beerFlavors from beerreview as br, beer as b where br.beerID = b.beerID and br.userID=:userID").setResultTransformer(Transformers.aliasToBean(ReviewList.class));
         query.setString("userID", FBLogin.FB_LOGIN_ID);
         List<ReviewList> beerReviewList = query.list();
@@ -78,7 +82,7 @@ public class FirstTimeUser {
     }
 
     private void probeDatabase(Session session) {
-        
+
         Transaction tx = session.beginTransaction();
         UsersEntity newUser = new UsersEntity();
         newUser.setUserId(FBLogin.FB_LOGIN_ID);
