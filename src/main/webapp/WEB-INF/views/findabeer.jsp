@@ -30,19 +30,8 @@
 
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
-    <link href="../../resources/styles.css" rel="stylesheet">
-    <style>
-        #find, #see {
-            color: firebrick;
-        }
-        form {
-            margin: 0 auto;
-            width: 100%;
-            border: 5px solid firebrick;
-            padding: 15px;
-        }
+    <link href="../resources/styles.css" rel="stylesheet">
 
-    </style>
 
 </head>
 <body>
@@ -80,17 +69,17 @@
 
     </div>
     <div class="col-md-4">
-        <form action="searchbyname" method="get">
+        <form action="searchbyname" method="get" class="findform">
             <input type="text" name="beerName" placeholder="Search By Name">
             <input type="submit" value="search">
         </form>
 
-        <form action="searchbybrewer" method="get">
+        <form action="searchbybrewer" method="get" class="findform">
             <input type="text" name="brewer" placeholder="Search By Brewer">
             <input type="submit" value="search">
         </form>
 
-        <form action="searchbybeertype" method="get">
+        <form action="searchbybeertype" method="get" class="findform">
             <input type="text" name="beerType" placeholder="Search By Beer Type">
             <input type="submit" value="search">
         </form>

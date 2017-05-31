@@ -31,31 +31,7 @@
 
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
-    <link href="../../resources/styles.css" rel="stylesheet">
-
-    <style>
-        select {
-            padding: 8px 8px 8px 8px;
-        }
-
-        form {
-            margin: 0 auto;
-            width: 50%;
-            border: 5px solid firebrick;
-            padding: 15px;
-        }
-
-        h1 {
-            text-align: center;
-        }
-
-        h1, h4{
-            color: firebrick;
-        }
-        #find, #see, #review{
-            color: firebrick;
-        }
-    </style>
+    <link href="../resources/styles.css" rel="stylesheet">
 
 </head>
 <body>
@@ -88,7 +64,7 @@
     </div><!-- /.container-fluid -->
 </nav>
 
-<form action="/reviewabeersuccess" method="post">
+<form action="/reviewabeersuccess" method="post" id="reviewform">
 
     <h1>Choose A Beer to Rate</h1>
 

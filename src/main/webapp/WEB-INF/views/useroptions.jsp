@@ -31,13 +31,7 @@
 
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
-    <link href="../../resources/styles.css" rel="stylesheet">
-
-    <style>
-        #find, #see, #review{
-            color: firebrick;
-        }
-    </style>
+    <link href="../resources/styles.css" rel="stylesheet">
 
 </head>
 <body>
@@ -183,11 +177,9 @@
 
                 <li class="active"><a id="add" href="/addabeer">Add A Beer <span
                         class="sr-only">(current)</span></a></li>
-                <li><a id="find" href="/findabeer">Find A Beer</a><</li>
-
+                <li><a id="find" href="/findabeer">Find A Beer</a></li>
 
                 <li><a id="review" href="/reviewabeer">Review A Beer</a></li>
-
 
                 <li><a id="see" href="/seemybeers">See What I've Rated</a></li>
             </ul>
@@ -209,7 +201,8 @@
             <div class="item active">
                 <img id="img1" src="https://slack-imgs.com/?c=1&url=https%3A%2F%2Fcdn.pixabay.com%2Fphoto%2F2014%2F08%2F26%2F15%2F35%2Fbeer-428121_960_720.jpg" alt="...">
                 <div class="carousel-caption">
-
+                    <h1>The Pour Score</h1>
+                    <p>Final project</p>
                 </div>
             </div>
             <div class="item">
@@ -217,8 +210,7 @@
                      src="https://images.pexels.com/photos/8800/snow-restaurant-mountains-sky.jpg?w=940&h=650&auto=compress&cs=tinysrgb"
                      alt="...">
                 <div class="carousel-caption">
-                    <h1>Pour Score</h1>
-                    <p>Final project</p>
+
                 </div>
             </div>
             <div class="item">

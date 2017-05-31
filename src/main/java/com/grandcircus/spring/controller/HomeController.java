@@ -3,11 +3,7 @@ package com.grandcircus.spring.controller;
 import com.grandcircus.spring.models.BeerEntity;
 import com.grandcircus.spring.models.BeerreviewEntity;
 import com.grandcircus.spring.models.ReviewList;
-import com.grandcircus.spring.models.UsersEntity;
-import org.hibernate.Criteria;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.transform.Transformers;
@@ -17,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import org.hibernate.Query;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,7 +44,7 @@ public class HomeController {
     @RequestMapping("/reviewabeer")
 
     public String reviewABeer(Model model) {
-        Criteria c = createSession();
+        Criteria c = createSession();//method
         ArrayList<BeerEntity> beersList = (ArrayList<BeerEntity>) c.list();
         model.addAttribute("beersList", beersList);
 
@@ -85,6 +80,7 @@ public class HomeController {
         SessionFactory sessionFact = cfg.buildSessionFactory();
         Session session = sessionFact.openSession();
         session.beginTransaction();
+        //using SQl query
         Query query = session.createSQLQuery("select br.beerDescription, br.beerRating, b.brewer, b.beerName, b.beerType, b.beerFlavors from beerreview as br, beer as b where br.beerID = b.beerID and br.userID=:userID").setResultTransformer(Transformers.aliasToBean(ReviewList.class));
         query.setString("userID", FBLogin.FB_LOGIN_ID);
         List<ReviewList> beerReviewList = query.list();

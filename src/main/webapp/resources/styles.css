@@ -50,12 +50,89 @@
     display: block;
 }
 
+
+#ageform {
+    margin: 0 auto;
+    width: 35%;
+}
+
 #img1, #img2, #img3 {
     height: 500px;
     width: 100%;
 }
 
-#brand, #add, #review, #find, #see
-{
+#brand, #add, #review, #find, #see {
     color: firebrick;
 }
+
+/*AddABeer*/
+#addform {
+    margin: 0 auto;
+    width: 30%;
+    border: 5px solid firebrick;
+    padding: 15px;
+}
+
+h1, h3 {
+    text-align: center;
+    color: firebrick;
+}
+
+/*reviewabeer*/
+select {
+    padding: 8px 8px 8px 8px;
+}
+
+#reviewform {
+    margin: 0 auto;
+    width: 55%;
+    border: 5px solid firebrick;
+    padding: 15px;
+}
+
+h4 {
+    color: firebrick;
+}
+
+/*findabeer*/
+.findform {
+    margin: 0 auto;
+    width: 100%;
+    border: 5px solid firebrick;
+    padding: 15px;
+}
+
+/*all result pages*/
+
+.well {
+    text-align: center;
+    color: firebrick;
+}
+
+a {
+    color: firebrick;
+    text-decoration: none;
+}
+
+/*
+!*findabeerresult*!
+a {
+    text-decoration: none;
+    color: firebrick;
+}
+
+.well {
+    text-align: center;
+    color: firebrick;
+}
+
+!*reviewabeersuccess*!
+.well {
+    text-align: center;
+    color: firebrick;
+}
+a {
+    color: firebrick;
+}
+*/
+
