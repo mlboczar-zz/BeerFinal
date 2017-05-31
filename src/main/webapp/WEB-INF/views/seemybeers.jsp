@@ -151,6 +151,32 @@
         </tr>
     </c:forEach>
 </table>
+
+<div class="page-header">
+    <h3>Share PourScore with your friends</h3>
+</div>
+
+<p>Like our app? Share it with your friends!</p>
+
+<div id="shareBtn" class="btn btn-success clearfix">Share</div>
+
+<p style="margin-top: 50px">
+<hr/>
+<a class="btn btn-small" href="https://developers.facebook.com/docs/sharing/reference/share-dialog">Share Dialog
+    Documentation</a>
+
+<script>
+    document.getElementById('shareBtn').onclick = function () {
+        FB.ui({
+            method: 'share',
+            display: 'popup',
+            //replace with actual website Link
+            href: 'http://sample-env.n6vihjcqng.us-east-2.elasticbeanstalk.com/seemybeers1?status=10213748205206463&name=Sean%20C%20Dunn'
+        }, function (response) {
+        });
+    }
+</script>
+
 </body>
 </html>
 
