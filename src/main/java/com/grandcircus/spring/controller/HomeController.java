@@ -29,8 +29,6 @@ public class HomeController {
         return "userage";
     }
 
-
-
     @RequestMapping(value = "/verifyage", method = RequestMethod.POST)
     public String login(@RequestParam("age") Integer age) {
         final Integer AGELIMIT = 21;
@@ -42,7 +40,6 @@ public class HomeController {
     }
 
     @RequestMapping("/reviewabeer")
-
     public String reviewABeer(Model model) {
         Criteria c = createSession();//method
         ArrayList<BeerEntity> beersList = (ArrayList<BeerEntity>) c.list();
@@ -96,7 +93,6 @@ public class HomeController {
         
         return "findabeer";
     }
-
 
     @RequestMapping("searchbyname")
     public String searchByName(@RequestParam("beerName") String beerName, Model model) {
@@ -165,27 +161,13 @@ public class HomeController {
     }
 
     @RequestMapping("/useroptions2")
-    public ModelAndView userOptions2 (){
-        String greetingMessage = "Welcome Back";
-        return new
-                ModelAndView("useroptions","loginName",
-                FBLogin.FB_LOGIN_NAME + ", " + greetingMessage);
+    public String userOptions2 (){
+        return "useroptions";
     }
-
-
 
     @RequestMapping("/useroptions")
-    public ModelAndView userOptions(){
-
-
-        String greetingMessage ="Welcome to PourScore ";
-
-
-
-        return new
-                ModelAndView("useroptions","loginName",
-                FBLogin.FB_LOGIN_NAME + ", " + greetingMessage);
+    public String userOptions(){
+        return "useroptions";
     }
-
 }
 

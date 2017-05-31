@@ -23,7 +23,6 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
@@ -35,15 +34,7 @@
 
 </head>
 <body>
-
-<table>
-    <tr>
-        <td>Hello,</td>
-        <td>${loginName}</td>
-    </tr>
-</table>
 <br>
-
 <script>
     function statusChangeCallback(response) {
         console.log('statusChangeCallback');
@@ -76,7 +67,6 @@
         FB.getLoginStatus(function (response) {
             statusChangeCallback(response);
         });
-
     };
 
     // Load the SDK asynchronously
@@ -93,19 +83,17 @@
         console.log('Welcome!  Fetching your information.... ');
         FB.api('/me', function (response) {
             console.log('Successful login for: ' + response.name);
-            document.getElementById('ourDiv').innerHTML ="Name: " + response.name + "<br>" +  "Id: " +
+            document.getElementById('ourDiv').innerHTML = "Name: " + response.name + "<br>" + "Id: " +
                 response.id;
 
-            document.getElementById('see').setAttribute("href","/seemybeers1?status=" +response.id
-                +"&name=" + response.name);
-            document.getElementById('add').setAttribute("href","/addabeer1?status=" + response.id
-                +"&name=" + response.name);
-            document.getElementById('find').setAttribute("href","/findabeer1?status=" + response.id
-                +"&name=" + response.name);
-            document.getElementById('review').setAttribute("href","/reviewabeer1?status=" +response.id
-                +"&name=" + response.name);
-
-
+            document.getElementById('see').setAttribute("href", "/seemybeers1?status=" + response.id
+                + "&name=" + response.name);
+            document.getElementById('add').setAttribute("href", "/addabeer1?status=" + response.id
+                + "&name=" + response.name);
+            document.getElementById('find').setAttribute("href", "/findabeer1?status=" + response.id
+                + "&name=" + response.name);
+            document.getElementById('review').setAttribute("href", "/reviewabeer1?status=" + response.id
+                + "&name=" + response.name);
         });
     }
 
@@ -160,7 +148,9 @@
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
             <div class="item active">
-                <img id="img1" src="https://slack-imgs.com/?c=1&url=https%3A%2F%2Fcdn.pixabay.com%2Fphoto%2F2014%2F08%2F26%2F15%2F35%2Fbeer-428121_960_720.jpg" alt="...">
+                <img id="img1"
+                     src="https://slack-imgs.com/?c=1&url=https%3A%2F%2Fcdn.pixabay.com%2Fphoto%2F2014%2F08%2F26%2F15%2F35%2Fbeer-428121_960_720.jpg"
+                     alt="...">
                 <div class="carousel-caption">
                     <h1>The Pour Score</h1>
                     <p>Final project</p>
@@ -179,10 +169,8 @@
                      src="https://s-media-cache-ak0.pinimg.com/originals/82/18/8f/82188fc924cc756f55d6ca488a8d5ace.jpg"
                      alt="...">
                 <div class="carousel-caption">
-
                 </div>
             </div>
-
         </div>
 
         <!-- Controls -->
@@ -209,7 +197,6 @@
 <hr/>
 <a class="btn btn-small" href="https://developers.facebook.com/docs/sharing/reference/share-dialog">Share Dialog
     Documentation</a>
-</p>
 
 <script>
     document.getElementById('shareBtn').onclick = function () {
@@ -217,11 +204,10 @@
             method: 'share',
             display: 'popup',
             //replace with actual website Link
-            href: 'https://google.com',
+            href: 'https://http://sample-env.n6vihjcqng.us-east-2.elasticbeanstalk.com'
         }, function (response) {
         });
     }
 </script>
-
 </body>
 </html>
