@@ -30,6 +30,12 @@
 </head>
 <body>
 
+<%--<form  >--%>
+    <%--<input type="hidden" name = "status" id="status" value='${status}'/>--%>
+    <%--<input type="hidden" name = "userName" id="userName" value='${userName}'/>--%>
+
+<%--</form>--%>
+
 <script>
     function statusChangeCallback(response) {
         console.log('statusChangeCallback');
@@ -92,6 +98,9 @@
                 +"&name=" + response.name);
 
 
+            document.getElementById('status').value = response.id;
+            document.getElementById('userName').value = response.name;
+
         });
     }
 
@@ -152,18 +161,14 @@
     </c:forEach>
 </table>
 
-<div class="page-header">
-    <h3>Share PourScore with your friends</h3>
-</div>
 
-<p>Like our app? Share it with your friends!</p>
+
+<p>Like your list? Share it with your friends!</p>
 
 <div id="shareBtn" class="btn btn-success clearfix">Share</div>
 
 <p style="margin-top: 50px">
 <hr/>
-<a class="btn btn-small" href="https://developers.facebook.com/docs/sharing/reference/share-dialog">Share Dialog
-    Documentation</a>
 
 <script>
     document.getElementById('shareBtn').onclick = function () {
@@ -171,7 +176,7 @@
             method: 'share',
             display: 'popup',
             //replace with actual website Link
-            href: 'http://sample-env.n6vihjcqng.us-east-2.elasticbeanstalk.com/seemybeers1?status=10213748205206463&name=Sean%20C%20Dunn'
+            href: document.URL
         }, function (response) {
         });
     }
