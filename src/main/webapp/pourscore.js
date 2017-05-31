@@ -33,7 +33,6 @@ window.fbAsyncInit = function () {
     FB.getLoginStatus(function (response) {
         statusChangeCallback(response);
     });
-
 };
 
 // Load the SDK asynchronously
@@ -53,16 +52,14 @@ function testAPI() {
         document.getElementById('ourDiv').innerHTML ="Name: " + response.name + "<br>" +  "Id: " +
             response.id;
 
-        document.getElementById('see').setAttribute("href","/seemybeers1?status=" +response.id
+        document.getElementById('see').setAttribute("href","/seemybeers?status=" +response.id
             +"&name=" + response.name);
-        document.getElementById('add').setAttribute("href","/addabeer1?status=" + response.id
+        document.getElementById('add').setAttribute("href","/addabeer?status=" + response.id
             +"&name=" + response.name);
-        document.getElementById('find').setAttribute("href","/findabeer1?status=" + response.id
+        document.getElementById('find').setAttribute("href","/findabeer?status=" + response.id
             +"&name=" + response.name);
-        document.getElementById('review').setAttribute("href","/reviewabeer1?status=" +response.id
+        document.getElementById('review').setAttribute("href","/reviewabeer?status=" +response.id
             +"&name=" + response.name);
-
-
     });
 }
 

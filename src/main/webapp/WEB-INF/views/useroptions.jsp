@@ -54,7 +54,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a id="brand" class="navbar-brand" href="/useroptions2"><i class="fa fa-beer" aria-hidden="true"></i> Pour
+            <a id="brand" class="navbar-brand" href="/useroptions"><i class="fa fa-beer" aria-hidden="true"></i> Pour
                 Score</a>
         </div>
 
@@ -145,7 +145,7 @@
             method: 'share',
             display: 'popup',
             //replace with actual website Link
-            href: 'https://http://sample-env.n6vihjcqng.us-east-2.elasticbeanstalk.com'
+            href: 'sample-env.n6vihjcqng.us-east-2.elasticbeanstalk.com'
         }, function (response) {
         });
     }
