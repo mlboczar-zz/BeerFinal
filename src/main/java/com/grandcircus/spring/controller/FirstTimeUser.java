@@ -23,17 +23,12 @@ public class FirstTimeUser {
 
     @RequestMapping("/findabeer1")
     public String findABeer1(@RequestParam("status") String id,
-                             @RequestParam("name") String name)
-    {
-        if(FBLogin.FB_LOGIN_ID.length()>0)
-            return "findabeer";
-        FBLogin.FB_LOGIN_NAME=name;
-        FBLogin.FB_LOGIN_ID=id;
+                             @RequestParam("name") String name) {
 
+        FBLogin.FB_LOGIN_NAME = name;
+        FBLogin.FB_LOGIN_ID = id;
         Session session = getSession();
-        //session.beginTransaction();
         probeDatabase(session);
-
         session.close();
 
         return "findabeer";
@@ -41,84 +36,59 @@ public class FirstTimeUser {
 
     @RequestMapping("/reviewabeer1")
     public String reviewABeer1(@RequestParam("status") String id,
-                             @RequestParam("name") String name, Model model)
-    {
-//        if(FBLogin.FB_LOGIN_ID.length()>0)
-//            return "reviewabeer";
-        FBLogin.FB_LOGIN_NAME=name;
-        FBLogin.FB_LOGIN_ID=id;
+                               @RequestParam("name") String name, Model model) {
 
+        FBLogin.FB_LOGIN_NAME = name;
+        FBLogin.FB_LOGIN_ID = id;
         Session session = getSession();
-        //session.beginTransaction();
         probeDatabase(session);
-
-        Criteria c = createSession();
+        Criteria c = HomeController.createSession();
         ArrayList<BeerEntity> beersList = (ArrayList<BeerEntity>) c.list();
         model.addAttribute("beersList", beersList);
-
         session.close();
+
         return "reviewabeer";
     }
 
     @RequestMapping("/addabeer1")
     public String addABeer1(@RequestParam("status") String id,
-                            @RequestParam("name") String name)
-    {
-        if(FBLogin.FB_LOGIN_ID.length()>0)
-            return "addabeer";
-        FBLogin.FB_LOGIN_NAME=name;
-        FBLogin.FB_LOGIN_ID=id;
+                            @RequestParam("name") String name) {
 
+        FBLogin.FB_LOGIN_NAME = name;
+        FBLogin.FB_LOGIN_ID = id;
         Session session = getSession();
-        //session.beginTransaction();
         probeDatabase(session);
-
         session.close();
+
         return "addabeer";
     }
 
     @RequestMapping("/seemybeers1")
     public String seeMyBeer1(@RequestParam("status") String id,
-                             @RequestParam("name") String name, Model model)
-    {
-        Session session;
-     if(FBLogin.FB_LOGIN_ID.length()<1) {
+                             @RequestParam("name") String name, Model model) {
 
-
-         FBLogin.FB_LOGIN_NAME = name;
-         FBLogin.FB_LOGIN_ID = id;
-
-         session = getSession();
-         //session.beginTransaction();
-         probeDatabase(session);
-     }
-     else
-         session = getSession();
-
+        Session session = getSession();
         Query query = session.createSQLQuery("select br.beerDescription, br.beerRating, b.brewer, b.beerName, b.beerType, b.beerFlavors from beerreview as br, beer as b where br.beerID = b.beerID and br.userID=:userID").setResultTransformer(Transformers.aliasToBean(ReviewList.class));
         query.setString("userID", FBLogin.FB_LOGIN_ID);
         List<ReviewList> beerReviewList = query.list();
         model.addAttribute("bList", beerReviewList);
-
         session.close();
+
         return "seemybeers";
     }
 
     private void probeDatabase(Session session) {
+        
         Transaction tx = session.beginTransaction();
-
         UsersEntity newUser = new UsersEntity();
-
         newUser.setUserId(FBLogin.FB_LOGIN_ID);
         newUser.setUserName(FBLogin.FB_LOGIN_NAME);
 
         try {
             session.save(newUser);
             tx.commit();
-
-        } catch (Exception e){
+        } catch (Exception e) {
             System.out.println("User was already in database");
-
         }
     }
 
@@ -127,14 +97,4 @@ public class FirstTimeUser {
         SessionFactory sessionFact = cfg.buildSessionFactory();
         return sessionFact.openSession();
     }
-    private static Criteria createSession() {
-        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
-        SessionFactory sessionFact = cfg.buildSessionFactory();
-        Session session = sessionFact.openSession();
-        session.beginTransaction();
-        return session.createCriteria(BeerEntity.class);
-    }
-
-
-
 }

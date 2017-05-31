@@ -128,7 +128,7 @@ public class HomeController {
         return "findabeerresult";
     }
 
-    private static Criteria createSession() {
+    public static Criteria createSession() {
         Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
         SessionFactory sessionFact = cfg.buildSessionFactory();
         Session session = sessionFact.openSession();
