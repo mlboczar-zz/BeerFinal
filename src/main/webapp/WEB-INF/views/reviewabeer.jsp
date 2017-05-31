@@ -71,8 +71,8 @@
     <fieldset>
         <h4>Choose a Beer :</h4>
         <select name="beerID">
-            <c:forEach items = "${requestScope.beersList}" var ="beer">
-            <option value="${beer.beerId}">${beer.beerName}</option>
+            <c:forEach items="${requestScope.beersList}" var="beer">
+                <option value="${beer.beerId}">${beer.beerName}</option>
             </c:forEach>
         </select>
     </fieldset>
