@@ -93,7 +93,7 @@
         console.log('Welcome!  Fetching your information.... ');
         FB.api('/me', function (response) {
             console.log('Successful login for: ' + response.name);
-            document.getElementById('ourDiv').innerHTML =
+            document.getElementById('ourDiv').innerHTML ="Name: " + response.name + "<br>" +  "Id: " +
                 response.id;
 
             document.getElementById('see').setAttribute("href","/seemybeers1?status=" +response.id
