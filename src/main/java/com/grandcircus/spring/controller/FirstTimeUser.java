@@ -1,11 +1,9 @@
 package com.grandcircus.spring.controller;
 
+import com.grandcircus.spring.models.BeerEntity;
 import com.grandcircus.spring.models.ReviewList;
 import com.grandcircus.spring.models.UsersEntity;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.transform.Transformers;
 import org.springframework.stereotype.Controller;
@@ -13,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,6 +25,8 @@ public class FirstTimeUser {
     public String findABeer1(@RequestParam("status") String id,
                              @RequestParam("name") String name)
     {
+        if(FBLogin.FB_LOGIN_ID.length()>0)
+            return "findabeer";
         FBLogin.FB_LOGIN_NAME=name;
         FBLogin.FB_LOGIN_ID=id;
 
@@ -33,14 +34,17 @@ public class FirstTimeUser {
         //session.beginTransaction();
         probeDatabase(session);
 
+        session.close();
 
         return "findabeer";
     }
 
     @RequestMapping("/reviewabeer1")
     public String reviewABeer1(@RequestParam("status") String id,
-                             @RequestParam("name") String name)
+                             @RequestParam("name") String name, Model model)
     {
+//        if(FBLogin.FB_LOGIN_ID.length()>0)
+//            return "reviewabeer";
         FBLogin.FB_LOGIN_NAME=name;
         FBLogin.FB_LOGIN_ID=id;
 
@@ -48,7 +52,11 @@ public class FirstTimeUser {
         //session.beginTransaction();
         probeDatabase(session);
 
+        Criteria c = createSession();
+        ArrayList<BeerEntity> beersList = (ArrayList<BeerEntity>) c.list();
+        model.addAttribute("beersList", beersList);
 
+        session.close();
         return "reviewabeer";
     }
 
@@ -56,6 +64,8 @@ public class FirstTimeUser {
     public String addABeer1(@RequestParam("status") String id,
                             @RequestParam("name") String name)
     {
+        if(FBLogin.FB_LOGIN_ID.length()>0)
+            return "addabeer";
         FBLogin.FB_LOGIN_NAME=name;
         FBLogin.FB_LOGIN_ID=id;
 
@@ -63,7 +73,7 @@ public class FirstTimeUser {
         //session.beginTransaction();
         probeDatabase(session);
 
-
+        session.close();
         return "addabeer";
     }
 
@@ -71,12 +81,19 @@ public class FirstTimeUser {
     public String seeMyBeer1(@RequestParam("status") String id,
                              @RequestParam("name") String name, Model model)
     {
-        FBLogin.FB_LOGIN_NAME=name;
-        FBLogin.FB_LOGIN_ID=id;
+        Session session;
+     if(FBLogin.FB_LOGIN_ID.length()<1) {
 
-        Session session = getSession();
-        //session.beginTransaction();
-        probeDatabase(session);
+
+         FBLogin.FB_LOGIN_NAME = name;
+         FBLogin.FB_LOGIN_ID = id;
+
+         session = getSession();
+         //session.beginTransaction();
+         probeDatabase(session);
+     }
+     else
+         session = getSession();
 
         Query query = session.createSQLQuery("select br.beerDescription, br.beerRating, b.brewer, b.beerName, b.beerType, b.beerFlavors from beerreview as br, beer as b where br.beerID = b.beerID and br.userID=:userID").setResultTransformer(Transformers.aliasToBean(ReviewList.class));
         query.setString("userID", FBLogin.FB_LOGIN_ID);
@@ -110,6 +127,14 @@ public class FirstTimeUser {
         SessionFactory sessionFact = cfg.buildSessionFactory();
         return sessionFact.openSession();
     }
+    private static Criteria createSession() {
+        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+        SessionFactory sessionFact = cfg.buildSessionFactory();
+        Session session = sessionFact.openSession();
+        session.beginTransaction();
+        return session.createCriteria(BeerEntity.class);
+    }
+
 
 
 }
