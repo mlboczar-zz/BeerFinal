@@ -144,6 +144,9 @@ public class HomeController {
                                  @RequestParam("beerType") String beerType,
                                  @RequestParam("beerFlavors") String beerFlavors) {
 
+        if(brewer.length()<1 || beerName.length()<1||beerType.length()<1||beerFlavors.length()<1){
+            return new ModelAndView("addabeer", "message", "Please fill out all fields");
+        }
         Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
         SessionFactory sessionFact = cfg.buildSessionFactory();
         Session session = sessionFact.openSession();

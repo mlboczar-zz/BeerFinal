@@ -114,25 +114,8 @@ a {
     text-decoration: none;
 }
 
-/*
-!*findabeerresult*!
-a {
-    text-decoration: none;
-    color: firebrick;
+.carousel-caption {
+    top: 0;
+    bottom: auto;
 }
-
-.well {
-    text-align: center;
-    color: firebrick;
-}
-
-!*reviewabeersuccess*!
-.well {
-    text-align: center;
-    color: firebrick;
-}
-a {
-    color: firebrick;
-}
-*/
 

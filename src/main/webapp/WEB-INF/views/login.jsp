@@ -123,11 +123,6 @@ ${message}
 
         });
     }
-
-
-
-
-
 </script>
 
 
@@ -143,8 +138,7 @@ ${message}
 <div id="ourDiv">
 </div>
 
-
-
+<script type="text/javascript" src="pourscore.js"></script>
 
 </body>
 </html>
