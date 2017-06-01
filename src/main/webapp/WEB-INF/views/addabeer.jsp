@@ -66,7 +66,7 @@
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
-<h3>Add a beer to your wishlist</h3>
+<h3>Add a beer to our database</h3>
 <form action="/addabeersuccess" method="post" id="addform">
     Brewer :<br>
     <input type="text" name="brewer"/><br><br>
