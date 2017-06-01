@@ -130,6 +130,7 @@ a {
 #table1 tr, #table1 td, #table2 tr, #table2 td {
     border:1px solid firebrick;
     padding: 5px;
+    text-align: center;
 }
 
 #table2{

@@ -77,6 +77,13 @@
     <div class="col-md-6 col-md-offset-1">
         <h3>Your Search Results</h3>
         <table id="table2">
+            <tr>
+                <td><b>Brewer</b></td>
+                <td><b>Beer Name</b></td>
+                <td><b>Beer Type</b></td>
+                <td><b>Beer Flavors</b></td>
+            </tr>
+
             <c:forEach var="beer" items="${bList}">
                 <tr>
                     <td>${beer.brewer}</td>

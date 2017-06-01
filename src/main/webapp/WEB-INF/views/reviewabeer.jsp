@@ -142,11 +142,11 @@
         <input type="radio" name="beerRating" value="1" id="radio-5">
         <label for="radio-5">1 Star</label>
     </fieldset>
-    <table id="table3">
-        <tr id="tr1">
-            <td id="td1"><input type="hidden" name="userID" value=${status}></td>
-            <td id="td2"></td>
-            <td id="td3">
+    <table>
+        <tr>
+            <td><input type="hidden" name="userID" value=${status}></td>
+            <td></td>
+            <td>
                 <button type="submit" class="btn btn-primary" name="Add Beer">Submit</button>
             </td>
         </tr>

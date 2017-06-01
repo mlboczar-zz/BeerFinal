@@ -32,7 +32,6 @@
 
     <link href="../resources/styles.css" rel="stylesheet">
 
-
 </head>
 <body>
 
@@ -76,11 +75,11 @@
 <table id="table1">
     <h3>My Beer List</h3>
     <tr>
-        <td>Brewer</td>
-        <td>Beer Name</td>
-        <td>Beer Type</td>
-        <td>Beer Description</td>
-        <td>Beer Rating</td>
+        <td> <b>Brewer</b></td>
+        <td><b>Beer Name</b></td>
+        <td><b>Beer Type</b></td>
+        <td><b>Beer Description</b></td>
+        <td><b>Beer Rating</b></td>
     </tr>
     <c:forEach var="beerreview" items="${bList}">
         <tr>
