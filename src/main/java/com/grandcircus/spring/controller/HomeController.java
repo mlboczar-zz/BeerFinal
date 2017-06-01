@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,11 +33,52 @@ public class HomeController {
     @RequestMapping(value = "/verifyage", method = RequestMethod.POST)
     public String login(@RequestParam("age") Integer age) {
         final Integer AGELIMIT = 21;
-        if (age >= AGELIMIT) {
+        if (age >= AGELIMIT && age <= 110) {
             return "useroptions";
+        } else if (age > 110) {
+            JOptionPane.showMessageDialog(null,"Please enter a valid age","Oops!",JOptionPane.WARNING_MESSAGE);
+            return "userage";
         } else {
+            JOptionPane.showMessageDialog(null,"You must be 21 to enter thePourScore","Oops!",JOptionPane.WARNING_MESSAGE);
             return "userage";
         }
+    }
+
+    @RequestMapping("/useroptions")
+    public String userOptions(){
+        return "useroptions";
+    }
+
+    @RequestMapping("addabeer")
+    public String addABeer() {
+
+        return "addabeer";
+    }
+
+    @RequestMapping("addabeersuccess")
+    public ModelAndView addABeer(@RequestParam("brewer") String brewer,
+                                 @RequestParam("beerName") String beerName,
+                                 @RequestParam("beerType") String beerType,
+                                 @RequestParam("beerFlavors") String beerFlavors) {
+
+        if(brewer.length()<1 || beerName.length()<1||beerType.length()<1||beerFlavors.length()<1){
+            return new ModelAndView("addabeer", "message", "Please fill out all fields");
+        }
+
+        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+        SessionFactory sessionFact = cfg.buildSessionFactory();
+        Session session = sessionFact.openSession();
+        Transaction tx = session.beginTransaction();
+        BeerEntity newBeer = new BeerEntity();
+        newBeer.setBrewer(brewer);
+        newBeer.setBeerName(beerName);
+        newBeer.setBeerType(beerType);
+        newBeer.setBeerFlavors(beerFlavors);
+        session.save(newBeer);
+        tx.commit();
+        session.close();
+        return new
+                ModelAndView("addabeersuccess", "addbeer", newBeer);
     }
 
     @RequestMapping("/reviewabeer")
@@ -74,27 +116,6 @@ public class HomeController {
 
         return new ModelAndView("reviewabeersuccess", "addingbeer", newBeerReview);
     }
-
-    @RequestMapping("/seemybeers")
-    public String seeMyBeers(@RequestParam("status") String id,
-                             Model model) {
-
-        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
-        SessionFactory sessionFact = cfg.buildSessionFactory();
-        Session session = sessionFact.openSession();
-        session.beginTransaction();
-
-        //using SQl query
-        Query query = session.createSQLQuery("select br.beerDescription, br.beerRating, b.brewer, b.beerName, b.beerType, b.beerFlavors from beerreview as br, beer as b where br.beerID = b.beerID and br.userID=:userID").setResultTransformer(Transformers.aliasToBean(ReviewList.class));
-
-        query.setString("userID", id);
-        List<ReviewList> beerReviewList = query.list();
-        model.addAttribute("bList", beerReviewList);
-        session.close();
-
-        return "seemybeers";
-    }
-
 
     @RequestMapping("/findabeer")
     public String findABeer(@RequestParam("status") String status,
@@ -139,49 +160,32 @@ public class HomeController {
         return "findabeerresult";
     }
 
+    @RequestMapping("/seemybeers")
+    public String seeMyBeers(@RequestParam("status") String id,
+                             Model model) {
+
+        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+        SessionFactory sessionFact = cfg.buildSessionFactory();
+        Session session = sessionFact.openSession();
+        session.beginTransaction();
+
+        //using SQl query
+        Query query = session.createSQLQuery("select br.beerDescription, br.beerRating, b.brewer, b.beerName, b.beerType, b.beerFlavors from beerreview as br, beer as b where br.beerID = b.beerID and br.userID=:userID").setResultTransformer(Transformers.aliasToBean(ReviewList.class));
+
+        query.setString("userID", id);
+        List<ReviewList> beerReviewList = query.list();
+        model.addAttribute("bList", beerReviewList);
+        session.close();
+
+        return "seemybeers";
+    }
+
     public static Session createSession() {
         Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
         SessionFactory sessionFact = cfg.buildSessionFactory();
         Session session = sessionFact.openSession();
         session.beginTransaction();
         return session;
-    }
-
-    @RequestMapping("addabeer")
-    public String addABeer() {
-
-        return "addabeer";
-    }
-
-    @RequestMapping("addabeersuccess")
-    public ModelAndView addABeer(@RequestParam("brewer") String brewer,
-                                 @RequestParam("beerName") String beerName,
-                                 @RequestParam("beerType") String beerType,
-                                 @RequestParam("beerFlavors") String beerFlavors) {
-
-        if(brewer.length()<1 || beerName.length()<1||beerType.length()<1||beerFlavors.length()<1){
-            return new ModelAndView("addabeer", "message", "Please fill out all fields");
-        }
-
-        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
-        SessionFactory sessionFact = cfg.buildSessionFactory();
-        Session session = sessionFact.openSession();
-        Transaction tx = session.beginTransaction();
-        BeerEntity newBeer = new BeerEntity();
-        newBeer.setBrewer(brewer);
-        newBeer.setBeerName(beerName);
-        newBeer.setBeerType(beerType);
-        newBeer.setBeerFlavors(beerFlavors);
-        session.save(newBeer);
-        tx.commit();
-        session.close();
-        return new
-                ModelAndView("addabeersuccess", "addbeer", newBeer);
-    }
-
-    @RequestMapping("/useroptions")
-    public String userOptions(){
-        return "useroptions";
     }
 }
 
