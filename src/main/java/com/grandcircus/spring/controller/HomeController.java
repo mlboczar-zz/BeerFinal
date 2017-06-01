@@ -40,10 +40,13 @@ public class HomeController {
     }
 
     @RequestMapping("/reviewabeer")
-    public String reviewABeer(Model model) {
-        Criteria c = createSession();//method
+    public String reviewABeer(@RequestParam("status") String id,
+                              @RequestParam("name") String name, Model model) {
+        Session session = createSession();
+        Criteria c = session.createCriteria(BeerEntity.class);
         ArrayList<BeerEntity> beersList = (ArrayList<BeerEntity>) c.list();
         model.addAttribute("beersList", beersList);
+        session.close();
 
         return "reviewabeer";
     }
@@ -51,6 +54,7 @@ public class HomeController {
     @RequestMapping("reviewabeersuccess")
     public ModelAndView reviewABeer(@RequestParam("beerID") int beerID,
                                     @RequestParam("beerDescription") String description,
+                                    @RequestParam("status") String id,
                                     @RequestParam("beerRating") String beerRating) {
 
         Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
@@ -61,7 +65,7 @@ public class HomeController {
         newBeerReview.setBeerId(beerID);
         newBeerReview.setBeerDescription(description);
         newBeerReview.setBeerRating(beerRating);
-        newBeerReview.setUserId(FBLogin.FB_LOGIN_ID);
+        newBeerReview.setUserId(id);
 
         session.save(newBeerReview);
         tx.commit();
@@ -71,7 +75,8 @@ public class HomeController {
     }
 
     @RequestMapping("/seemybeers")
-    public String seeMyBeers(Model model) {
+    public String seeMyBeers(@RequestParam("status") String id,
+                             @RequestParam("name") String name, Model model) {
 
         Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
         SessionFactory sessionFact = cfg.buildSessionFactory();
@@ -81,59 +86,68 @@ public class HomeController {
         //using SQl query
         Query query = session.createSQLQuery("select br.beerDescription, br.beerRating, b.brewer, b.beerName, b.beerType, b.beerFlavors from beerreview as br, beer as b where br.beerID = b.beerID and br.userID=:userID").setResultTransformer(Transformers.aliasToBean(ReviewList.class));
 
-        query.setString("userID", FBLogin.FB_LOGIN_ID);
+        query.setString("userID", id);
         List<ReviewList> beerReviewList = query.list();
         model.addAttribute("bList", beerReviewList);
+        session.close();
 
         return "seemybeers";
     }
 
     @RequestMapping("/findabeer")
-    public String findABeer() {
+    public String findABeer(@RequestParam("status") String status,
+                            @RequestParam("name") String name, Model model) {
         
         return "findabeer";
     }
 
     @RequestMapping("searchbyname")
     public String searchByName(@RequestParam("beerName") String beerName, Model model) {
-        Criteria c = createSession();
+        Session session = createSession();
+        Criteria c = session.createCriteria(BeerEntity.class);
         c.add(Restrictions.like("beerName", "%" + beerName + "%"));
         ArrayList<BeerEntity> beerList = (ArrayList<BeerEntity>) c.list();
         model.addAttribute("bList", beerList);
+        session.close();
 
         return "findabeerresult";
     }
 
     @RequestMapping("searchbybrewer")
     public String searchByBrewer(@RequestParam("brewer") String brewer, Model model) {
-        Criteria c = createSession();
+        Session session = createSession();
+        Criteria c = session.createCriteria(BeerEntity.class);
         c.add(Restrictions.like("brewer", "%" + brewer + "%"));
         ArrayList<BeerEntity> beerList = (ArrayList<BeerEntity>) c.list();
         model.addAttribute("bList", beerList);
+        session.close();
 
         return "findabeerresult";
     }
 
     @RequestMapping("searchbybeertype")
     public String searchByBeerType(@RequestParam("beerType") String beerType, Model model) {
-        Criteria c = createSession();
+        Session session = createSession();
+        Criteria c = session.createCriteria(BeerEntity.class);
         c.add(Restrictions.like("beerType", "%" + beerType + "%"));
         ArrayList<BeerEntity> beerList = (ArrayList<BeerEntity>) c.list();
         model.addAttribute("bList", beerList);
+        session.close();
 
         return "findabeerresult";
     }
 
-    public static Criteria createSession() {
+    public static Session createSession() {
         Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
         SessionFactory sessionFact = cfg.buildSessionFactory();
         Session session = sessionFact.openSession();
         session.beginTransaction();
-        return session.createCriteria(BeerEntity.class);
+        return session;
     }
 
     @RequestMapping("addabeer")
-    public String addABeer() {
+    public String addABeer(@RequestParam( value = "status" ,defaultValue = "") String id,
+                            @RequestParam(value = "name") String name, Model model) {
 
         return "addabeer";
     }
@@ -147,6 +161,7 @@ public class HomeController {
         if(brewer.length()<1 || beerName.length()<1||beerType.length()<1||beerFlavors.length()<1){
             return new ModelAndView("addabeer", "message", "Please fill out all fields");
         }
+
         Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
         SessionFactory sessionFact = cfg.buildSessionFactory();
         Session session = sessionFact.openSession();
@@ -162,11 +177,11 @@ public class HomeController {
         return new
                 ModelAndView("addabeersuccess", "addbeer", newBeer);
     }
-
-    @RequestMapping("/useroptions2")
-    public String userOptions2 (){
-        return "useroptions";
-    }
+//
+//    @RequestMapping("/useroptions2")
+//    public String userOptions2 (){
+//        return "useroptions";
+//    }
 
     @RequestMapping("/useroptions")
     public String userOptions(){

@@ -20,7 +20,7 @@
           integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="/resources/demos/style.css">
+    <link rel="stylesheet" href="/resources/styles.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
@@ -35,7 +35,8 @@
 
 </head>
 <body>
-
+<div id="ourDiv">
+</div>
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -47,7 +48,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a id="brand" class="navbar-brand" href="/useroptions2"><i class="fa fa-beer" aria-hidden="true"></i> Pour
+            <a id="brand" class="navbar-brand" href="/useroptions"><i class="fa fa-beer" aria-hidden="true"></i> Pour
                 Score</a>
         </div>
 
@@ -145,12 +146,14 @@
         </tr>
     </table>
 </form>
+<script type="text/javascript" src="pourscore.js"></script>
 
+<%--<script>--%>
+<%--$(function () {--%>
+<%--$("input").checkboxradio();--%>
+<%--});--%>
+<%--</script>--%>
 </body>
 
-<script>
-    $(function () {
-        $("input").checkboxradio();
-    });
-</script>
+
 </html>
