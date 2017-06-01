@@ -100,10 +100,7 @@
 <p style="margin-top: 50px">
 <hr/>
 
-<a class="btn btn-small" href="https://developers.facebook.com/docs/sharing/reference/share-dialog">Share Dialog
-    Documentation</a>
 <script type="text/javascript" src="pourscore.js"></script>
-
 
 <script>
     document.getElementById('shareBtn').onclick = function () {

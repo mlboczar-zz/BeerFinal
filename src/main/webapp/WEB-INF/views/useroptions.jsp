@@ -62,12 +62,9 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
 
-                <li class="active"><a id="add" href="/addabeer">Add A Beer <span
-                        class="sr-only">(current)</span></a></li>
+                <li><a id="add" href="/addabeer">Add A Beer</a></li>
                 <li><a id="find" href="/findabeer">Find A Beer</a></li>
-
                 <li><a id="review" href="/reviewabeer">Review A Beer</a></li>
-
                 <li><a id="see" href="/seemybeers">See What I've Rated</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
@@ -133,9 +130,6 @@
 
 <p style="margin-top: 50px">
 <hr/>
-<a class="btn btn-small" href="https://developers.facebook.com/docs/sharing/reference/share-dialog">Share Dialog
-    Documentation</a>
-
 
 <script type="text/javascript" src="pourscore.js"></script>
 

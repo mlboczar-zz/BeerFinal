@@ -41,7 +41,7 @@ public class HomeController {
 
     @RequestMapping("/reviewabeer")
     public String reviewABeer(@RequestParam(value="status") String id,
-                              @RequestParam(value="name") String name, Model model) {
+                              Model model) {
         Session session = createSession();
         Criteria c = session.createCriteria(BeerEntity.class);
         ArrayList<BeerEntity> beersList = (ArrayList<BeerEntity>) c.list();
@@ -77,7 +77,7 @@ public class HomeController {
 
     @RequestMapping("/seemybeers")
     public String seeMyBeers(@RequestParam("status") String id,
-                             @RequestParam("name") String name, Model model) {
+                             Model model) {
 
         Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
         SessionFactory sessionFact = cfg.buildSessionFactory();
@@ -148,8 +148,7 @@ public class HomeController {
     }
 
     @RequestMapping("addabeer")
-    public String addABeer(@RequestParam( value = "status" ,defaultValue = "") String id,
-                            @RequestParam(value = "name") String name, Model model) {
+    public String addABeer() {
 
         return "addabeer";
     }
@@ -179,11 +178,6 @@ public class HomeController {
         return new
                 ModelAndView("addabeersuccess", "addbeer", newBeer);
     }
-//
-//    @RequestMapping("/useroptions2")
-//    public String userOptions2 (){
-//        return "useroptions";
-//    }
 
     @RequestMapping("/useroptions")
     public String userOptions(){
