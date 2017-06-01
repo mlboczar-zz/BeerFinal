@@ -36,11 +36,7 @@ public class HomeController {
         final Integer AGELIMIT = 21;
         if (age >= AGELIMIT && age <= 110) {
             return "useroptions";
-        } else if (age > 110) {
-            JOptionPane.showMessageDialog(null,"Please enter a valid age","Oops!",JOptionPane.WARNING_MESSAGE);
-            return "userage";
         } else {
-            JOptionPane.showMessageDialog(null,"You must be 21 to enter thePourScore","Oops!",JOptionPane.WARNING_MESSAGE);
             return "userage";
         }
     }
