@@ -3,6 +3,7 @@ package com.grandcircus.spring.controller;
 import com.grandcircus.spring.models.BeerEntity;
 import com.grandcircus.spring.models.BeerreviewEntity;
 import com.grandcircus.spring.models.ReviewList;
+import com.grandcircus.spring.models.UsersEntity;
 import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Restrictions;
@@ -83,7 +84,32 @@ public class HomeController {
 
     @RequestMapping("/reviewabeer")
     public String reviewABeer(@RequestParam(value="status") String id,
+                              @RequestParam(value="name") String name,
                               Model model) {
+
+
+
+        //Add the User to the Database if they are not there
+        Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
+        SessionFactory sessionFact = cfg.buildSessionFactory();
+        Session session2 = sessionFact.openSession();
+
+        Transaction tx = session2.beginTransaction();
+        UsersEntity newUser = new UsersEntity();
+
+        newUser.setUserId(id);
+        newUser.setUserName(name);
+
+        try {
+            session2.save(newUser);
+            tx.commit();
+            session2.close();
+        } catch (Exception e){
+            session2.close();
+
+        }
+        //User has been added if they weren't already there
+
         Session session = createSession();
         Criteria c = session.createCriteria(BeerEntity.class);
         ArrayList<BeerEntity> beersList = (ArrayList<BeerEntity>) c.list();
