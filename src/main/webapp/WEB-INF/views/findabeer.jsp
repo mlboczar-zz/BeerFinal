@@ -71,6 +71,7 @@
 <br>
 
 <div class="container">
+    <h3>Search For A Beer In Our Database</h3>
     <div class="col-md-4">
 
     </div>

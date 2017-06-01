@@ -32,6 +32,7 @@
 
     <link href="../resources/styles.css" rel="stylesheet">
 
+
 </head>
 <body>
 
@@ -72,7 +73,8 @@
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
-<table border="1">
+<table id="table1">
+    <h3>My Beer List</h3>
     <tr>
         <td>Brewer</td>
         <td>Beer Name</td>
@@ -91,11 +93,10 @@
     </c:forEach>
 </table>
 
-
-
-<p>Like your list? Share it with your friends!</p>
-
-<div id="shareBtn" class="btn btn-success clearfix">Share</div>
+<h5>Like your list? Share it with your friends!</h5>
+<div style="text-align: center;">
+    <div style="display: inline-block;"  id="shareBtn" class="btn btn-success clearfix">Share</div>
+</div>
 
 <p style="margin-top: 50px">
 <hr/>

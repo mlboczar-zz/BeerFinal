@@ -64,10 +64,11 @@
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
+<br>
 
+<h3>Choose A Beer to Rate</h3>
 <form action="/reviewabeersuccess" method="post" id="reviewform">
 
-    <h1>Choose A Beer to Rate</h1>
 
     <fieldset>
         <h4>Choose a Beer :</h4>
@@ -80,67 +81,72 @@
     <br>
     <fieldset>
         <h4>Beer Description :</h4>
-        <label for="checkbox-1">Bold</label>
         <input type="checkbox" name="beerDescription" value="Bold" id="checkbox-1">
+        <label for="checkbox-1">Bold</label>
 
-        <label for="checkbox-2">Hoppy</label>
         <input type="checkbox" name="beerDescription" value="Hoppy" id="checkbox-2">
+        <label for="checkbox-2">Hoppy</label>
 
-        <label for="checkbox-3">Light</label>
         <input type="checkbox" name="beerDescription" value="Light" id="checkbox-3">
+        <label for="checkbox-3">Light</label>
 
-        <label for="checkbox-4">Zesty</label>
         <input type="checkbox" name="beerDescription" value="Zesty" id="checkbox-4">
+        <label for="checkbox-4">Zesty</label>
 
-        <label for="checkbox-5">Creamy</label>
         <input type="checkbox" name="beerDescription" value="Creamy" id="checkbox-5">
+        <label for="checkbox-5">Creamy</label>
 
-        <label for="checkbox-6">Fruity</label>
         <input type="checkbox" name="beerDescription" value="Fruity" id="checkbox-6">
+        <label for="checkbox-6">Fruity</label>
 
-        <label for="checkbox-7">Smooth</label>
         <input type="checkbox" name="beerDescription" value="Smooth" id="checkbox-7">
+        <label for="checkbox-7">Smooth</label>
         <br>
-        <label for="checkbox-8">Rich</label>
         <input type="checkbox" name="beerDescription" value="Rich" id="checkbox-8">
+        <label for="checkbox-8">Rich</label>
 
-        <label for="checkbox-9">Malty</label>
         <input type="checkbox" name="beerDescription" value="Malty" id="checkbox-9">
+        <label for="checkbox-9">Malty</label>
 
-        <label for="checkbox-10">Crisp</label>
         <input type="checkbox" name="beerDescription" value="Crisp" id="checkbox-10">
+        <label for="checkbox-10">Crisp</label>
 
-        <label for="checkbox-11">Bitter</label>
         <input type="checkbox" name="beerDescription" value="Bitter" id="checkbox-11">
+        <label for="checkbox-11">Bitter</label>
 
-        <label for="checkbox-12">Floral</label>
         <input type="checkbox" name="beerDescription" value="Floral" id="checkbox-12">
+        <label for="checkbox-12">Floral</label>
 
         <label for="checkbox-13">Delicate</label>
         <input type="checkbox" name="beerDescription" value="Delicate" id="checkbox-13">
 
-        <label for="checkbox-14">Refreshing</label>
         <input type="checkbox" name="beerDescription" value="Refreshing" id="checkbox-14">
+        <label for="checkbox-14">Refreshing</label>
     </fieldset>
     <br>
     <fieldset>
         <h4>Beer Rating :</h4>
-        <label for="radio-1">5 Star</label>
+
         <input type="radio" name="beerRating" value="5" id="radio-1">
-        <label for="radio-2">4 Star</label>
+        <label for="radio-1">5 Star</label>
+
         <input type="radio" name="beerRating" value="4" id="radio-2">
-        <label for="radio-3">3 Star</label>
+        <label for="radio-2">4 Star</label>
+
         <input type="radio" name="beerRating" value="3" id="radio-3">
-        <label for="radio-4">2 Star</label>
+        <label for="radio-3">3 Star</label>
+
         <input type="radio" name="beerRating" value="2" id="radio-4">
-        <label for="radio-5">1 Star</label>
+        <label for="radio-4">2 Star</label>
+
         <input type="radio" name="beerRating" value="1" id="radio-5">
+        <label for="radio-5">1 Star</label>
     </fieldset>
-    <table>
-        <tr>
-            <td><input type="hidden" name="userID" value=${status}></td>
-            <td></td>
-            <td>
+    <table id="table3">
+        <tr id="tr1">
+            <td id="td1"><input type="hidden" name="userID" value=${status}></td>
+            <td id="td2"></td>
+            <td id="td3">
                 <button type="submit" class="btn btn-primary" name="Add Beer">Submit</button>
             </td>
         </tr>

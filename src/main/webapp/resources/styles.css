@@ -73,7 +73,7 @@
     padding: 15px;
 }
 
-h1, h3 {
+h1, h2, h3, h5 {
     text-align: center;
     color: firebrick;
 }
@@ -117,5 +117,25 @@ a {
 .carousel-caption {
     top: 0;
     bottom: auto;
+}
+
+/*
+/*seemybeertable*/
+#table1{
+    margin: 0 auto;
+    width: 55%;
+    border: 5px solid firebrick;
+    padding: 15px;
+}
+#table1 tr, #table1 td, #table2 tr, #table2 td {
+    border:1px solid firebrick;
+    padding: 5px;
+}
+
+#table2{
+    margin: 0 auto;
+    width: 100%;
+    border: 5px solid firebrick;
+    padding: 15px;
 }
 

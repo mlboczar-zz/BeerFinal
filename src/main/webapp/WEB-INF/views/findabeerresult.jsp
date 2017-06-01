@@ -75,7 +75,8 @@
 
     </div>
     <div class="col-md-6 col-md-offset-1">
-        <table border="1">
+        <h3>Your Search Results</h3>
+        <table id="table2">
             <c:forEach var="beer" items="${bList}">
                 <tr>
                     <td>${beer.brewer}</td>
