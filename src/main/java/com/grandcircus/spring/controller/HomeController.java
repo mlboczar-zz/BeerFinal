@@ -40,12 +40,13 @@ public class HomeController {
     }
 
     @RequestMapping("/reviewabeer")
-    public String reviewABeer(@RequestParam("status") String id,
-                              @RequestParam("name") String name, Model model) {
+    public String reviewABeer(@RequestParam(value="status") String id,
+                              @RequestParam(value="name") String name, Model model) {
         Session session = createSession();
         Criteria c = session.createCriteria(BeerEntity.class);
         ArrayList<BeerEntity> beersList = (ArrayList<BeerEntity>) c.list();
         model.addAttribute("beersList", beersList);
+        model.addAttribute("status", id);
         session.close();
 
         return "reviewabeer";
@@ -54,7 +55,7 @@ public class HomeController {
     @RequestMapping("reviewabeersuccess")
     public ModelAndView reviewABeer(@RequestParam("beerID") int beerID,
                                     @RequestParam("beerDescription") String description,
-                                    @RequestParam("status") String id,
+                                    @RequestParam("userID") String id,
                                     @RequestParam("beerRating") String beerRating) {
 
         Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
@@ -93,6 +94,7 @@ public class HomeController {
 
         return "seemybeers";
     }
+
 
     @RequestMapping("/findabeer")
     public String findABeer(@RequestParam("status") String status,

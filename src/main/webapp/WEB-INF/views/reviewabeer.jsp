@@ -138,7 +138,7 @@
     </fieldset>
     <table>
         <tr>
-            <td><input type="hidden" name="userID" value="userId"></td>
+            <td><input type="hidden" name="userID" value=${status}></td>
             <td></td>
             <td>
                 <button type="submit" class="btn btn-primary" name="Add Beer">Submit</button>
