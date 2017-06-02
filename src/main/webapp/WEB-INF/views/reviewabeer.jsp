@@ -117,8 +117,8 @@
         <input type="checkbox" name="beerDescription" value="Floral" id="checkbox-12">
         <label for="checkbox-12">Floral</label>
 
-        <label for="checkbox-13">Delicate</label>
         <input type="checkbox" name="beerDescription" value="Delicate" id="checkbox-13">
+        <label for="checkbox-13">Delicate</label>
 
         <input type="checkbox" name="beerDescription" value="Refreshing" id="checkbox-14">
         <label for="checkbox-14">Refreshing</label>
