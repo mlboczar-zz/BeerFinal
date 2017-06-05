@@ -32,7 +32,6 @@
 
     <link href="../resources/styles.css" rel="stylesheet">
 
-
 </head>
 <body>
 
@@ -73,7 +72,6 @@
 <div class="container">
     <h3>Search For A Beer In Our Database</h3>
     <div class="col-md-4">
-
     </div>
     <div class="col-md-4">
         <form action="searchbyname" method="get" class="findform">
@@ -92,7 +90,6 @@
         </form>
     </div>
     <div class="col-md-4">
-
     </div>
 </div>
 
